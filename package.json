@@ -1,0 +1,19 @@
+{
+  "name": "tacosfantasyfootball",
+  "version": "1.0.0",
+  "description": "Josh Ellison aka wildcard",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/docholliday211/TacosFantasyFootball.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/docholliday211/TacosFantasyFootball/issues"
+  },
+  "homepage": "https://github.com/docholliday211/TacosFantasyFootball#readme"
+}
