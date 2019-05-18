@@ -113,6 +113,7 @@ app.controller('MainController', [ '$http', function($http) {
 
 }]) // closes app.controller
 
+
 ///////////////////////////////////////////////////////////////////////////////
 //Starting to build out code and psuedo sections for our implementation
 
@@ -159,3 +160,66 @@ this.getFiltered = () => {
 
 // 1 is for ppr set equal to check box
 // QB is another filter. figure out how to set to variable and have filters alter. maybe store as object if multiple filters are selected.
+=======
+// Auth controller set up!
+app.controller('AuthController', ['$http', function ($http){
+const controller = this;
+  this.goApp = function(){
+    const controller = this; //add this
+    $http({
+        method:'GET',
+        url: '/app'
+    }).then(function(response){
+        controller.loggedInUsername = response.data.username;
+    }, function(){
+        console.log('error');
+    });
+}
+
+
+
+this.createUser = () => {
+  $http({
+          method:'POST',
+          url: '/users',
+          data: {
+              username: this.createUsername,
+              password: this.createPassword
+          }
+      }).then(function(response){
+          console.log(response);
+      }, function(){
+          console.log('error');
+      });
+}
+this.logOut = function () {
+  $http({
+    method: 'DELETE',
+    url: '/sessions'
+  }).then(function (response) {
+    console.log(response);
+    controller.loggedInUsername = null;
+  }, function (error){
+    console.log(error);
+  })
+}
+this.logIn = function(){
+    $http({
+        method:'POST',
+        url: '/sessions',
+        data: {
+            username: this.loginUsername,
+            password: this.loginPassword
+        }
+    }).then(function(response){
+        console.log(response);
+        controller.loginUsername = null;
+        controller.loginPassword = null;
+    }, function(){
+        console.log('error');
+    });
+}
+
+}]);
+
+  
