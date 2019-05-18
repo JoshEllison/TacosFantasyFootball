@@ -112,7 +112,7 @@ app.controller('MainController', [ '$http', function($http) {
 
 
 }]) // closes app.controller
-// Auth controller set up! 
+// Auth controller set up!
 app.controller('AuthController', ['$http', function ($http){
 const controller = this;
   this.goApp = function(){
