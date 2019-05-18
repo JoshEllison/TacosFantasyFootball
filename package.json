@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/docholliday211/TacosFantasyFootball/issues"
   },
-  "homepage": "https://github.com/docholliday211/TacosFantasyFootball#readme"
+  "homepage": "https://github.com/docholliday211/TacosFantasyFootball#readme",
+  "dependencies": {
+    "express": "^4.17.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.5.9",
+    "morgan": "^1.9.1"
+  }
 }
