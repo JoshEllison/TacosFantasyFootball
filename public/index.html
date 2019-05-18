@@ -96,3 +96,10 @@ draft projections fantasy points -->
   </body>
 
 </html>
+<form ng-submit='ctrl.create()'>
+  <input type="text" ng-model='ctrl.createForm.title' placeholder="Blog name">
+  <textarea ng-model="ctrl.createForm.text" name="textarea" placeholder="Blog Post Text" rows="8"
+    cols="80"></textarea>
+  <input type="text" placeholder="Tags (space separated)" ng-model="ctrl.createForm.tags">
+  <input type="submit" class="melon-button" id="submit-new-post" value="Create New Blog Post">
+</form>

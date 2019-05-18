@@ -112,6 +112,57 @@ app.controller('MainController', [ '$http', function($http) {
 
 
 }]) // closes app.controller
+
+
+///////////////////////////////////////////////////////////////////////////////
+//Starting to build out code and psuedo sections for our implementation
+
+//
+// psuedo for our selection stuff
+
+this.editFootballModal = (football) => {
+  this.editFootball.modal = !this.editFootball.modal;
+  this.editFootball.football = football;
+
+
+
+
+
+this.getFiltered = () => {
+  $http({
+    method: 'GET',
+    url: 'https://www.fantasyfootballnerd.com/service/' + filteredVar
+  }).then( response => {
+    this.authToken = response.data
+
+    // this.blogs = response.data
+    // this.blog = this.blogs[0]
+    // console.log(this.blogs)
+  }).catch( err => { console.log(err)})
+}
+// for the HTML with API calls
+// <form ng-on click //then have modal script bring it up in a modal
+
+
+//https://www.fantasyfootballnerd.com/service/draft-rankings/json/test/1/
+
+
+// const apiURL = https://www.fantasyfootballnerd.com/service/
+// const apiKey = iqiam5yq7fm7
+
+// Build out button on click to pass in value of filterService based on which of our functionality is clicked. Maybe set up a local cache to save the request and then just show the results with toggle hide if they are selected in the filters.
+
+// const
+  // not sure how to pass in filter with multiple selectors. Work on other stuff and come back to.
+// https://www.fantasyfootballnerd.com/service/players/json/apiKey/QB/
+// const apiFormat = "https://www.fantasyfootballnerd.com/service/" + filterService + "json" + apiKey
+
+////https://www.fantasyfootballnerd.com/service/draft-rankings/json/apiKey/1/QB/
+
+
+// 1 is for ppr set equal to check box
+// QB is another filter. figure out how to set to variable and have filters alter. maybe store as object if multiple filters are selected.
+=======
 // Auth controller set up!
 app.controller('AuthController', ['$http', function ($http){
 const controller = this;
@@ -172,3 +223,5 @@ this.logIn = function(){
 }
 
 }]);
+
+  
