@@ -120,26 +120,26 @@ app.controller('MainController', [ '$http', function($http) {
 //
 // psuedo for our selection stuff
 
-this.editFootballModal = (football) => {
-  this.editFootball.modal = !this.editFootball.modal;
-  this.editFootball.football = football;
+// this.editFootballModal = (football) => {
+//   this.editFootball.modal = !this.editFootball.modal;
+//   this.editFootball.football = football;
 
 
 
 
 
-this.getFiltered = () => {
-  $http({
-    method: 'GET',
-    url: 'https://www.fantasyfootballnerd.com/service/' + filteredVar
-  }).then( response => {
-    this.authToken = response.data
-
-    // this.blogs = response.data
-    // this.blog = this.blogs[0]
-    // console.log(this.blogs)
-  }).catch( err => { console.log(err)})
-}
+// this.getFiltered = () => {
+//   $http({
+//     method: 'GET',
+//     url: 'https://www.fantasyfootballnerd.com/service/' + filteredVar
+//   }).then( response => {
+//     this.authToken = response.data
+//
+//     // this.blogs = response.data
+//     // this.blog = this.blogs[0]
+//     // console.log(this.blogs)
+//   }).catch( err => { console.log(err)})
+// }
 // for the HTML with API calls
 // <form ng-on click //then have modal script bring it up in a modal
 
@@ -325,7 +325,7 @@ this.getFiltered = () => {
 
 
 
-=======
+
 // Auth controller set up!
 app.controller('AuthController', ['$http', function ($http){
 const controller = this;
