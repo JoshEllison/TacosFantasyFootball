@@ -325,7 +325,7 @@ this.getFiltered = () => {
 
 
 
-=======
+
 // Auth controller set up!
 app.controller('AuthController', ['$http', function ($http){
 const controller = this;
