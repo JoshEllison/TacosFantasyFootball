@@ -143,10 +143,75 @@ this.getFiltered = () => {
 // for the HTML with API calls
 // <form ng-on click //then have modal script bring it up in a modal
 
+//  create button for specific query ex draft rankings add check for filter ppr or non ppr. On click have modal pop up for query positions with drop down for all or single position in a form. have form on submit call function to query new call.
 
-//https://www.fantasyfootballnerd.com/service/draft-rankings/json/test/1/
+////////////////// weekly rankings required week position and ppr 1 for yes ppr (check box) . results in array. so set variable to empty array to store results.data
+//https://www.fantasyfootballnerd.com/service/weekly-rankings/json/apiKey/QB/2/1/
+///service/{SERVICE-NAME}/{FORMAT}/{API-KEY}/{position}/{week}/{ppr}/
+// position required and week required //optional ppr
+// data example
+// {
+//     "Week": 2,
+//     "PPR": 1,
+//     "Position": "QB",
+//     "Rankings": [
+//         {
+//             "week": "2",
+//             "playerId": "14",
+//             "name": "Drew Brees",
+//             "position": "QB",
+//             "team": "NO",
+//             "standard": "24.80",
+//             "standardLow": "18.92",
+//             "standardHigh": "32.00",
+//             "ppr": "24.80",
+//             "pprLow": "18.92",
+//             "pprHigh": "32.00",
+//             "injury": null,
+//             "practiceStatus": null,
+//             "gameStatus": null,
+//             "lastUpdate": null
+//         },
 
 
+////////////////// depth chart filter by team. Do 2 positions for everything but WR (3)
+//https://www.fantasyfootballnerd.com/service/depth-charts/json/apiKey/
+// data format {
+//     "DepthCharts": {
+//         "ARI": {
+//             "RB": [
+//                 {
+//                     "team": "ARI",
+//                     "position": "RB",
+//                     "depth": "1",
+//                     "playerId": "240",
+//                     "playerName": "Rashard Mendenhall"
+//                 },
+
+
+
+////////////////// injuries leave empty for current week or drop down for previous weeks.
+//https://www.fantasyfootballnerd.com/service/injuries/json/apiKey/1/
+// 1 in this example would be for week 1. blank is for current week
+
+////////////////// idp weekly same format
+// https://www.fantasyfootballnerd.com/service/weekly-idp/json/apiKey/
+
+////////////////// weekly projections position filter same weekly filter options
+//https://www.fantasyfootballnerd.com/service/weekly-projections/json/apiKey/QB/1/
+
+// ////////////////idp draft rankings filter by position S LB DE CB DT////////////////
+//https://www.fantasyfootballnerd.com/service/draft-idp/json/apiKey/
+// can pass in position ex S at end
+
+////////////////// draft rankings//////////
+////https://www.fantasyfootballnerd.com/service/draft-rankings/json/apiKey/1/QB/
+// 1 is for ppr set equal to check box
+// QB is another filter. figure out how to set to variable and have filters alter. maybe store as object if multiple filters are selected.
+
+
+////////////////// draft projections fantasy points////////////////
+//https://www.fantasyfootballnerd.com/service/draft-projections/json/apiKey/QB/
 // const apiURL = https://www.fantasyfootballnerd.com/service/
 // const apiKey = iqiam5yq7fm7
 
@@ -157,11 +222,9 @@ this.getFiltered = () => {
 // https://www.fantasyfootballnerd.com/service/players/json/apiKey/QB/
 // const apiFormat = "https://www.fantasyfootballnerd.com/service/" + filterService + "json" + apiKey
 
-////https://www.fantasyfootballnerd.com/service/draft-rankings/json/apiKey/1/QB/
 
 
-// 1 is for ppr set equal to check box
-// QB is another filter. figure out how to set to variable and have filters alter. maybe store as object if multiple filters are selected.
+
 =======
 // Auth controller set up!
 app.controller('AuthController', ['$http', function ($http){
@@ -223,5 +286,3 @@ this.logIn = function(){
 }
 
 }]);
-
-  
