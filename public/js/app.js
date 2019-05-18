@@ -39,7 +39,7 @@ app.controller('MainController', [ '$http', function($http) {
       method: 'GET',
       url: '/blogs'
     }).then( response => {
-      this.authToken = response.data 
+      this.authToken = response.data
 
       this.blogs = response.data
       this.blog = this.blogs[0]
@@ -112,3 +112,63 @@ app.controller('MainController', [ '$http', function($http) {
 
 
 }]) // closes app.controller
+// Auth controller set up! 
+app.controller('AuthController', ['$http', function ($http){
+const controller = this;
+  this.goApp = function(){
+    const controller = this; //add this
+    $http({
+        method:'GET',
+        url: '/app'
+    }).then(function(response){
+        controller.loggedInUsername = response.data.username;
+    }, function(){
+        console.log('error');
+    });
+}
+
+
+
+this.createUser = () => {
+  $http({
+          method:'POST',
+          url: '/users',
+          data: {
+              username: this.createUsername,
+              password: this.createPassword
+          }
+      }).then(function(response){
+          console.log(response);
+      }, function(){
+          console.log('error');
+      });
+}
+this.logOut = function () {
+  $http({
+    method: 'DELETE',
+    url: '/sessions'
+  }).then(function (response) {
+    console.log(response);
+    controller.loggedInUsername = null;
+  }, function (error){
+    console.log(error);
+  })
+}
+this.logIn = function(){
+    $http({
+        method:'POST',
+        url: '/sessions',
+        data: {
+            username: this.loginUsername,
+            password: this.loginPassword
+        }
+    }).then(function(response){
+        console.log(response);
+        controller.loginUsername = null;
+        controller.loginPassword = null;
+    }, function(){
+        console.log('error');
+    });
+}
+
+}]);
