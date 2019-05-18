@@ -10,6 +10,25 @@ app.controller('MainController', [ '$http', function($http) {
   this.blog = ''
   this.createForm = {};
   this.editBlog = {};
+  this.tools = [] //fill with buttons
+
+
+
+  function ctrl($scope) {
+
+    $scope.toggleDraft = function () {
+      $scope.state = !$scope.state;
+    };
+  }
+
+
+  function ctrl($scope) {
+
+    $scope.toggleSeason = function () {
+      $scope.state = !$scope.state;
+    };
+  }
+
 
   // createHoliday method
   this.createBlog = () => {
