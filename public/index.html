@@ -27,8 +27,8 @@ draft projections fantasy points -->
 <!-- add our angular controller -->
 <body ng-controller='MainController as ctrl'>
   <div class="container">
-    <h1>My Blog</h1>
-{{2+2}}
+    <h1>Taco's Fantasy Football</h1>
+      {{2+2}}
     <!-- <form class="new-post" ng-submit='ctrl.createBlog()'>
       <input type="text" ng-model='ctrl.createForm.title' placeholder="Blog name">
       <textarea ng-model="ctrl.createForm.text" name="textarea" placeholder="Blog Post Text" rows="8"
@@ -66,9 +66,22 @@ draft projections fantasy points -->
           <label for="tags">Tags
             <input type="text" ng-model="ctrl.editBlog.blog.tags" id="tags">
           </label>
-        </div>
-
-          <label for="text">Text </label>
+        </div> -->
+        <h2>Create User</h2>
+            <form ng-submit="auth.createUser()">
+                <input type="text" ng-model="auth.username" />
+                <input type="password" ng-model="auth.password" />
+                <input type="submit" value="Create User" />
+            </form>
+            <h2>Log In</h2>
+            <form ng-submit="auth.logIn()">
+              <input type="text" ng-model="auth.username" />
+              <input type="password" ng-model="auth.password" />
+              <input type="submit" value="Log In">
+            </form>
+            <h2>Go to "the app"</h2>
+            <a href="#" ng-click="auth.goApp()">Click here</a>
+          <!-- <label for="text">Text </label>
           <textarea class="edit-text-content u-full-width" ng-model="ctrl.editBlog.blog.text" id="text"></textarea>
 
 
