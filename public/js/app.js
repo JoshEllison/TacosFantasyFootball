@@ -143,8 +143,6 @@ this.getFiltered = () => {
 // <form ng-on click //then have modal script bring it up in a modal
 
 
-//https://www.fantasyfootballnerd.com/service/draft-rankings/json/test/1/
-
 
 // const apiURL = https://www.fantasyfootballnerd.com/service/
 // const apiKey = iqiam5yq7fm7
