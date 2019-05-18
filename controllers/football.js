@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const Football = require('../models/footballs.js')
+const Football = require('../models/footballmods.js')
 
 // INDEX
 router.get('/', (req, res) => {
