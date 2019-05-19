@@ -29,44 +29,43 @@ draft projections fantasy points -->
   <div class="container">
     <h1>Taco's Fantasy Football</h1>
       {{2+2}}
-    <!-- <form class="new-post" ng-submit='ctrl.createBlog()'>
-      <input type="text" ng-model='ctrl.createForm.title' placeholder="Blog name">
-      <textarea ng-model="ctrl.createForm.text" name="textarea" placeholder="Blog Post Text" rows="8"
-        cols="80"></textarea>
-      <input type="text" placeholder="Tags (space separated)" ng-model="ctrl.createForm.tags">
-      <input type="submit" class="melon-button" id="submit-new-post" value="Create New Blog Post">
-    </form>
 
-    <div>
-      <div ng-repeat="blog in ctrl.blogs" class="post-content">
-        <div class="post-header">
-          <h3>{{football.}}</h3>
-          <div class="likes-tags">
-            <h6 class="melon-button"> {{ blog.likes }} <span class='like-button' ng-click="ctrl.increaseLikes(blog)"> Like! </span> </h6>
-            <h7> Tags: {{ blog.tags }}</h7>
-          </div>
-        </div>
-        <hr>
-        <p> {{blog.text}}</p>
 
-        <h8> Posted: {{blog.createdAt}}</h8>
-        <button ng-click="ctrl.deleteBlog(blog._id)" class="melon-button">Delete</button>
-        <button ng-click="ctrl.editBlogModal(blog)" class="melon-button">Edit</button>
-      </div>
+
+
+    <div class="draftContainer">
+      <h1> Draft Tools </h1>
+      <button>Draft Rankings</button>
+
+      <button>Draft Projections</button>
+
+      <button>Draft IDP Rankings</button>
+
+
     </div>
-  </div>
 
-  <div class="modal" ng-class="(ctrl.editBlog.modal ? 'edit' : '')">
-    <form class="modal-form">
-      <div class="row">
-        <div class="title-tag-row">
-          <label>Title
-            <input type="text" ng-model="ctrl.editBlog.blog.title" id="title">
-          </label>
-          <label for="tags">Tags
-            <input type="text" ng-model="ctrl.editBlog.blog.tags" id="tags">
-          </label>
-        </div> -->
+    <div class="seasonContainer">
+      <h2> Season Tools </h2>
+      <button ng-click="modalWeeklyRankings()">Weekly Rankings</button>
+
+
+      <button>Depth Chart</button>
+
+      <button>Injuries</button>
+
+      <button>Weekly Projections</button>
+
+      <button>IDP Weekly Projections</button>
+
+
+    </div>
+
+
+
+
+
+
+
         <div ng-controller="AuthController as auth"
         <h2>Create User</h2>
             <form ng-submit="auth.createUser()">
@@ -112,7 +111,44 @@ draft projections fantasy points -->
 
     </div>
 
+<!-- <form class="new-post" ng-submit='ctrl.createBlog()'>
+      <input type="text" ng-model='ctrl.createForm.title' placeholder="Blog name">
+      <textarea ng-model="ctrl.createForm.text" name="textarea" placeholder="Blog Post Text" rows="8"
+        cols="80"></textarea>
+      <input type="text" placeholder="Tags (space separated)" ng-model="ctrl.createForm.tags">
+      <input type="submit" class="melon-button" id="submit-new-post" value="Create New Blog Post">
+    </form>
 
+    <div>
+      <div ng-repeat="blog in ctrl.blogs" class="post-content">
+        <div class="post-header">
+          <h3>{{football.}}</h3>
+          <div class="likes-tags">
+            <h6 class="melon-button"> {{ blog.likes }} <span class='like-button' ng-click="ctrl.increaseLikes(blog)"> Like! </span> </h6>
+            <h7> Tags: {{ blog.tags }}</h7>
+          </div>
+        </div>
+        <hr>
+        <p> {{blog.text}}</p>
+
+        <h8> Posted: {{blog.createdAt}}</h8>
+        <button ng-click="ctrl.deleteBlog(blog._id)" class="melon-button">Delete</button>
+        <button ng-click="ctrl.editBlogModal(blog)" class="melon-button">Edit</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" ng-class="(ctrl.editBlog.modal ? 'edit' : '')">
+    <form class="modal-form">
+      <div class="row">
+        <div class="title-tag-row">
+          <label>Title
+            <input type="text" ng-model="ctrl.editBlog.blog.title" id="title">
+          </label>
+          <label for="tags">Tags
+            <input type="text" ng-model="ctrl.editBlog.blog.tags" id="tags">
+          </label>
+        </div> -->
   </body>
 
 </html>
