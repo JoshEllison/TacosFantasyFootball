@@ -27,13 +27,15 @@ app.controller('MainController', [ '$http', function($http) {
   this.formWP =[]
   this.weeklyIDP = ''
   this.formIDP = []
+
+  // this.formIDP[0] + '/' + this.formIDP[1] + '/'
   // this.editBlog = {};
   // this.tools = [] //fill with buttons
   //DRAFT TOOLS
 this.draftRankings = () => {
   console.log(this.createFormDR);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormDR,
     ppr: this.createFormDRCheck}
@@ -51,7 +53,7 @@ this.draftRankings = () => {
 this.draftProjections = () => {
   console.log(this.createFormDP);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormDP,
     ppr: this.createFormDPCheck}
@@ -68,7 +70,7 @@ this.draftProjections = () => {
 this.draftIDP = () => {
   console.log(this.createFormIDPDraft);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormIDPDraft,
     ppr: this.createFormIDPDraftCheck}
@@ -86,7 +88,7 @@ this.draftIDP = () => {
 this.weeklyRankings = () => {
   console.log(this.createFormWR);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormWR,
     ppr: this.createFormWRCheck}
@@ -103,7 +105,7 @@ this.weeklyRankings = () => {
 this.weeklyDC = () => {
   console.log(this.createFormDC);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormDC,
     ppr: this.createFormDCCheck}
@@ -121,7 +123,7 @@ this.weeklyInjuries = () => {
   console.log(this.createFormInjuries);
   $http({
     method:'GET',
-    url:'https://www.fantasyfootballnerd.com/service/injuries/json/iqiam5yq7fm7/'
+    url:'/footballs/injuries'
   }).then(response => {
     returnedQuery = response.data
     console.log(response.data);
@@ -131,10 +133,12 @@ this.weeklyInjuries = () => {
 }
 
 
+
+
 this.weeklyWP = () => {
   console.log(this.createFormWP);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormWP,
     ppr: this.createFormWPCheck}
@@ -150,7 +154,7 @@ this.weeklyWP = () => {
 this.weeklyIDP = () => {
   console.log(this.createFormIDP);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormIDP,
     ppr: this.createFormIDPCheck}
@@ -162,6 +166,7 @@ this.weeklyIDP = () => {
     console.log(err);
   })
 }
+
 
 
   // createHoliday method
