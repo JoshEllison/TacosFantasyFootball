@@ -100,18 +100,24 @@ draft projections fantasy points -->
         <div ng-controller="AuthController as auth"
         <h2>Create User</h2>
             <form ng-submit="auth.createUser()">
-                <input type="text" ng-model="auth.username" />
-                <input type="password" ng-model="auth.password" />
+                <input type="text" ng-model="auth.createUsername" />
+                <input type="password" ng-model="auth.createPassword" />
                 <input type="submit" value="Create User" />
             </form>
             <h2>Log In</h2>
             <form ng-submit="auth.logIn()">
-              <input type="text" ng-model="auth.username" />
-              <input type="password" ng-model="auth.password" />
+              <input type="text" ng-model="auth.loginUsername" />
+              <input type="password" ng-model="auth.loginPassword" />
               <input type="submit" value="Log In">
+            </form>
+            <form ng-submit="auth.logOut()">
+              <input type="submit" value=" Logout">
             </form>
             <h2>Go to "the app"</h2>
             <a href="#" ng-click="auth.goApp()">Click here</a>
+            <div ng-if="auth.loggedInUsername">
+               Welcome, {{ auth.loggedInUsername }}
+            </div>
           </div>
 
 </body>
