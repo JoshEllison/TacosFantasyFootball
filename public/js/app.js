@@ -8,6 +8,7 @@ app.controller('MainController', [ '$http', function($http) {
   // this.authToken = ''
   // this.blogs = []
   // this.blog = ''
+<<<<<<< HEAD
   // this.createForm = {};
   // this.editBlog = {};
   // this.tools = [] //fill with buttons
@@ -32,11 +33,41 @@ app.controller('MainController', [ '$http', function($http) {
 
   // createHoliday method
   // this.createPlayers = () => {
+=======
+  this.createFormDR = ''
+  this.formDR = []
+  // this.editBlog = {};
+  // this.tools = [] //fill with buttons
+this.draftRankings = () => {
+  console.log(this.createFormDR);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {playerName: this.createFormDR,
+    ppr: this.createFormCheck}
+  }).then(response => {
+    this.formDR.unshift(response.data)
+    this.createFormDR = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+
+
+  // createHoliday method
+  // this.createBlog = () => {
+>>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
   //   this.createForm.tags = this.createForm.tags.split(' ')
   //   console.log(this.createForm.tags);
   //   $http({
   //     method:'POST',
+<<<<<<< HEAD
   //     url:'/blogs',
+=======
+  //     url:'/footballs',
+>>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
   //     data: this.createForm
   //   }).then(response => {
   //     // holiday was created successfully...what to no now?
@@ -50,6 +81,7 @@ app.controller('MainController', [ '$http', function($http) {
   //     console.log(err)
   //   })
   // } // closes createHoliday
+<<<<<<< HEAD
 
   this.createPlayer = function(){
           $http({
@@ -87,6 +119,29 @@ app.controller('MainController', [ '$http', function($http) {
   //   $http({
   //     method:'Delete',
   //     url: '/blogs/' + id
+=======
+
+  // getHolidays method
+  // get auth token
+  // this.getBlogs = () => {
+  //   $http({
+  //     method: 'GET',
+  //     url: '/footballs'
+  //   }).then( response => {
+  //     this.authToken = response.data
+  //
+  //     this.blogs = response.data
+  //     this.blog = this.blogs[0]
+  //     console.log(this.blogs)
+  //   }).catch( err => { console.log(err)})
+  // } // close getHolidays
+  //
+  // // deleteHoliday method
+  // this.deleteBlog = id => {
+  //   $http({
+  //     method:'Delete',
+  //     url: '/footballs/' + id
+>>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
   //     // the delete has been successful
   //   }).then(response => {
   //     console.log(response.data)
@@ -97,8 +152,13 @@ app.controller('MainController', [ '$http', function($http) {
   //     this.blogs.splice(removeByIndex, 1)
   //   }).catch(err => console.log(err))
   // } // close deleteHoliday
+<<<<<<< HEAD
 
   // updateCelebrated method
+=======
+  //
+  // // updateCelebrated method
+>>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
   // this.updateBlog = blog => {
   //   $http({
   //     method:'PUT',
@@ -121,11 +181,19 @@ app.controller('MainController', [ '$http', function($http) {
   //   this.updateBlog(blog)
   //
   // }
+<<<<<<< HEAD
 
   // call the getHolidays method on page load
   this.getPlayers()
 
   //Edit and Modal
+=======
+  //
+  // // call the getHolidays method on page load
+  // this.getBlogs()
+  //
+  // //Edit and Modal
+>>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
   // this.editBlogModal = (blog) => {
   //   this.editBlog.modal = !this.editBlog.modal;
   //   this.editBlog.blog = blog;

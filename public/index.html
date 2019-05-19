@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
-
 <!-- create button for specific query ex draft rankings add check for filter ppr or non ppr. On click have modal pop up for query positions with drop down for all or single position in a form. have form on submit call function to query new call.    -->
 <!-- weekly rankings required week position and ppr 1 for yes ppr (check box) . results in array. so set variable to empty array to store results.data
 depth chart filter by team. Do 2 positions for everything but WR (3)
@@ -26,10 +25,56 @@ draft projections fantasy points -->
 
 <!-- add our angular controller -->
 <body ng-controller='MainController as ctrl'>
+{{2+2}}
   <div class="container">
     <h1>Taco's Fantasy Football</h1>
+<<<<<<< HEAD
       {{2+2}}
 
+=======
+
+
+
+
+
+    <div class="draftContainer">
+      <h1> Draft Tools </h1>
+      <button>Draft Rankings</button>
+        <form ng-submit="ctrl.draftRankings()">
+          <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
+          <input type="checkbox" ng-model="ctrl.createFormCheck" placeholder="check for PPR"/>
+          <input type="submit" value="Search Rankings" />
+        </form>
+      <button>Draft Projections</button>
+
+      <button>Draft IDP Rankings</button>
+
+
+    </div>
+
+    <div class="seasonContainer">
+      <h2> Season Tools </h2>
+      <button ng-click="modalWeeklyRankings()">Weekly Rankings</button>
+
+
+      <button>Depth Chart</button>
+
+      <button>Injuries</button>
+
+      <button>Weekly Projections</button>
+
+      <button>IDP Weekly Projections</button>
+
+
+    </div>
+
+
+
+
+
+
+
+>>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
         <div ng-controller="AuthController as auth"
         <h2>Create User</h2>
             <form ng-submit="auth.createUser()">
@@ -45,8 +90,23 @@ draft projections fantasy points -->
             </form>
             <h2>Go to "the app"</h2>
             <a href="#" ng-click="auth.goApp()">Click here</a>
+<<<<<<< HEAD
 
       <div class="">
+=======
+          </div>
+
+</body>
+
+</html>
+
+
+          <!-- <input type="submit" ng-click="ctrl.saveEditBlog(ctrl.editBlog.blog)" value="Update Blog" class="button-primary">
+          <button class="melon-button" ng-click="ctrl.cancelEditBlog(ctrl.editBlog.blog)"> Don't Update </button>
+        </div>
+      </form> -->
+      <!-- <div class="">
+>>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
         <h3>Filter By:</h3><br>
         <button ng-click="toggleSeason()">DRAFT TOOLS</button><br>
         <div ng-show="state"> it won't work</div>
@@ -64,11 +124,45 @@ draft projections fantasy points -->
         <button ng-click="ctrl.editPlayer(player)" class="melon-button">Edit Draft Rank</button>
         <input type="number" ng-model="ctrl.editRank">
         <button ng-click="ctrl.saveEdit()">Save New Rank</button>
+      </div> -->
+
+
+
+<!-- <form class="new-post" ng-submit='ctrl.createBlog()'>
+      <input type="text" ng-model='ctrl.createForm.title' placeholder="Blog name">
+      <textarea ng-model="ctrl.createForm.text" name="textarea" placeholder="Blog Post Text" rows="8"
+        cols="80"></textarea>
+      <input type="text" placeholder="Tags (space separated)" ng-model="ctrl.createForm.tags">
+      <input type="submit" class="melon-button" id="submit-new-post" value="Create New Blog Post">
+    </form>
+
+    <div>
+      <div ng-repeat="blog in ctrl.blogs" class="post-content">
+        <div class="post-header">
+          <h3>{{football.}}</h3>
+          <div class="likes-tags">
+            <h6 class="melon-button"> {{ blog.likes }} <span class='like-button' ng-click="ctrl.increaseLikes(blog)"> Like! </span> </h6>
+            <h7> Tags: {{ blog.tags }}</h7>
+          </div>
+        </div>
+        <hr>
+        <p> {{blog.text}}</p>
+
+        <h8> Posted: {{blog.createdAt}}</h8>
+        <button ng-click="ctrl.deleteBlog(blog._id)" class="melon-button">Delete</button>
+        <button ng-click="ctrl.editBlogModal(blog)" class="melon-button">Edit</button>
       </div>
-
     </div>
+  </div>
 
-
-  </body>
-
-</html>
+  <div class="modal" ng-class="(ctrl.editBlog.modal ? 'edit' : '')">
+    <form class="modal-form">
+      <div class="row">
+        <div class="title-tag-row">
+          <label>Title
+            <input type="text" ng-model="ctrl.editBlog.blog.title" id="title">
+          </label>
+          <label for="tags">Tags
+            <input type="text" ng-model="ctrl.editBlog.blog.tags" id="tags">
+          </label>
+        </div> -->
