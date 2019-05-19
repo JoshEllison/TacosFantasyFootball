@@ -600,10 +600,9 @@ this.weeklyIDPCall = () => {
 app.controller('AuthController', ['$http', function ($http){
 const controller = this;
   this.goApp = function(){
-    const controller = this; //add this
     $http({
         method:'GET',
-        url: '/app'
+        url: '/footballs'
     }).then(function(response){
         controller.loggedInUsername = response.data.username;
     }, function(){
@@ -623,21 +622,26 @@ this.createUser = () => {
           }
       }).then(function(response){
           console.log(response);
+          // controller.createUsername = null;
+          // controller.createPassword = null;
       }, function(){
           console.log('error');
       });
 }
+
+
 this.logOut = function () {
   $http({
     method: 'DELETE',
     url: '/sessions'
   }).then(function (response) {
     console.log(response);
-    controller.loggedInUsername = null;
+    // controller.loggedInUsername = null;
   }, function (error){
     console.log(error);
   })
 }
+
 this.logIn = function(){
     $http({
         method:'POST',
@@ -650,6 +654,7 @@ this.logIn = function(){
         console.log(response);
         controller.loginUsername = null;
         controller.loginPassword = null;
+        // controller.goApp();
     }, function(){
         console.log('error');
     });
