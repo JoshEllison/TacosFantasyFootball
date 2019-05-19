@@ -47,7 +47,8 @@ draft projections fantasy points -->
           <input type="checkbox" ng-model="ctrl.createFormDPCheck" placeholder="check for PPR"/>
           <input type="submit" value="Search Rankings" />
         </form>
-      <button>Draft IDP Rankings</button>
+      <button ng-click="ctrl.draftIDPCall()">Draft IDP Rankings</button>
+
       <form ng-submit="ctrl.draftIDP()">
         <input type="text" ng-model="ctrl.createFormIDPDraft" placeholder="Position"/>
         <input type="checkbox" ng-model="ctrl.createFormIDPDraftCheck" placeholder="check for PPR"/>

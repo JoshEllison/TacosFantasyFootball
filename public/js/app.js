@@ -5,6 +5,13 @@ const app = angular.module('FootballsApp', [])
 // create our app controller
 app.controller('MainController', [ '$http', function($http) {
 
+//
+//https://www.fantasyfootballnerd.com/service/weekly-rankings/json/apiKey/QB/2/1/
+// https://www.fantasyfootballnerd.com/service/weekly-idp/json/apiKey/
+//https://www.fantasyfootballnerd.com/service/weekly-projections/json/apiKey/QB/1/
+//https://www.fantasyfootballnerd.com/service/draft-idp/json/apiKey/
+////https://www.fantasyfootballnerd.com/service/draft-rankings/json/apiKey/1/QB/
+//https://www.fantasyfootballnerd.com/service/draft-projections/json/apiKey/QB/
 
   this.h5 = 'Fantasy Football!!!'
  // because of 2 way binding...anytime the holidays array is updated (add/remove)..
@@ -126,12 +133,26 @@ this.weeklyInjuries = () => {
     url:'/footballs/injuries'
   }).then(response => {
     returnedQuery = response.data
+    console.log(returnedQuery);
     console.log(response.data);
   }).catch(err => {
     console.log(err);
   })
 }
 
+this.draftIDPCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/draftIDP'
+  }).then(response => {
+    returnedIDPCall = {};
+    returnedIDPCall = response.data
+    console.log(returnedIDPCall);
+    console.log(response.data);
+  }).catch(err => {
+    console.log(err);
+  })
+}
 
 
 
@@ -384,6 +405,7 @@ this.weeklyIDP = () => {
 
 ////////////////// weekly projections position filter same weekly filter options
 //https://www.fantasyfootballnerd.com/service/weekly-projections/json/apiKey/QB/1/
+
 // {
 //     "Week": 1,
 //     "Position": "QB",
