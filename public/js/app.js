@@ -17,7 +17,7 @@ this.draftRankings = () => {
   $http({
     method:'POST',
     url:'/footballs',
-    data: {playerName: this.createFormDR,
+    data: {position: this.createFormDR,
     ppr: this.createFormCheck}
   }).then(response => {
     this.formDR.unshift(response.data)
@@ -254,7 +254,7 @@ this.draftRankings = () => {
 //             "playerId": "14",
 //             "position": "QB",
 //             "passAtt": "39.0",
-//             "passCmp": "25.0",
+//             "rushTD": "25.0",
 //             "passYds": "317.0",
 //             "passTD": "2.0",
 //             "passInt": "1.0",
