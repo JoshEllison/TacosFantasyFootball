@@ -3,18 +3,29 @@ const mongoose = require('mongoose');
 
 // change to what data we want to display
 const footballSchema = mongoose.Schema({
-<<<<<<< HEAD
-  playerName: {type: String, required: true},
-  position: {type: String, required: true},
-  rank: {type: Number, minimum: 1},
-}, {timestamps: true})
-=======
   playerName: {type: String},
   text: {type: String},
 
   ppr: {type: Boolean, default: 1}
 
+  displayName: {type: String},
+  week: {type: Number, minimum: 1},
+  team: {type: String},
+  position: {type: String},
+  rank: {type: Number},
+  fantasyPoints: {type: String},
+  overallRank: {type: String},
+  byeWeek: {type: String},
+  completions: {type: String},
+  attempts: {type: String},
+  passingTD: {type: String},
+  passingYards: {type: String},
+  passingInt: {type: String},
+  rushYards: {type: String},
+  rushTD: {type: String},
+  passAtt: {type: String},
+  ppr: {type: Boolean, default: 0}
+
 })
->>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
 
 module.exports = mongoose.model('Football', footballSchema);

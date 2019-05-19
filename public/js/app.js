@@ -8,7 +8,7 @@ app.controller('MainController', [ '$http', function($http) {
   // this.authToken = ''
   // this.blogs = []
   // this.blog = ''
-<<<<<<< HEAD
+
   // this.createForm = {};
   // this.editBlog = {};
   // this.tools = [] //fill with buttons
@@ -33,7 +33,7 @@ app.controller('MainController', [ '$http', function($http) {
 
   // createHoliday method
   // this.createPlayers = () => {
-=======
+
   this.createFormDR = ''
   this.formDR = []
   // this.editBlog = {};
@@ -43,7 +43,7 @@ this.draftRankings = () => {
   $http({
     method:'POST',
     url:'/footballs',
-    data: {playerName: this.createFormDR,
+    data: {position: this.createFormDR,
     ppr: this.createFormCheck}
   }).then(response => {
     this.formDR.unshift(response.data)
@@ -58,16 +58,16 @@ this.draftRankings = () => {
 
   // createHoliday method
   // this.createBlog = () => {
->>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
+
   //   this.createForm.tags = this.createForm.tags.split(' ')
   //   console.log(this.createForm.tags);
   //   $http({
   //     method:'POST',
-<<<<<<< HEAD
+
   //     url:'/blogs',
-=======
+
   //     url:'/footballs',
->>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
+
   //     data: this.createForm
   //   }).then(response => {
   //     // holiday was created successfully...what to no now?
@@ -81,7 +81,7 @@ this.draftRankings = () => {
   //     console.log(err)
   //   })
   // } // closes createHoliday
-<<<<<<< HEAD
+
 
   this.createPlayer = function(){
           $http({
@@ -119,7 +119,7 @@ this.draftRankings = () => {
   //   $http({
   //     method:'Delete',
   //     url: '/blogs/' + id
-=======
+
 
   // getHolidays method
   // get auth token
@@ -141,7 +141,7 @@ this.draftRankings = () => {
   //   $http({
   //     method:'Delete',
   //     url: '/footballs/' + id
->>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
+
   //     // the delete has been successful
   //   }).then(response => {
   //     console.log(response.data)
@@ -152,13 +152,13 @@ this.draftRankings = () => {
   //     this.blogs.splice(removeByIndex, 1)
   //   }).catch(err => console.log(err))
   // } // close deleteHoliday
-<<<<<<< HEAD
+
 
   // updateCelebrated method
-=======
+
   //
   // // updateCelebrated method
->>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
+
   // this.updateBlog = blog => {
   //   $http({
   //     method:'PUT',
@@ -181,19 +181,19 @@ this.draftRankings = () => {
   //   this.updateBlog(blog)
   //
   // }
-<<<<<<< HEAD
+
 
   // call the getHolidays method on page load
   this.getPlayers()
 
   //Edit and Modal
-=======
+
   //
   // // call the getHolidays method on page load
   // this.getBlogs()
   //
   // //Edit and Modal
->>>>>>> 32e78944add0658b554899c2c3a9c53935b79165
+
   // this.editBlogModal = (blog) => {
   //   this.editBlog.modal = !this.editBlog.modal;
   //   this.editBlog.blog = blog;
@@ -338,7 +338,7 @@ this.draftRankings = () => {
 //             "playerId": "14",
 //             "position": "QB",
 //             "passAtt": "39.0",
-//             "passCmp": "25.0",
+//             "rushTD": "25.0",
 //             "passYds": "317.0",
 //             "passTD": "2.0",
 //             "passInt": "1.0",
