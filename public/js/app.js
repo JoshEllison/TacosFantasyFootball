@@ -5,6 +5,13 @@ const app = angular.module('FootballsApp', [])
 // create our app controller
 app.controller('MainController', [ '$http', function($http) {
 
+//
+//https://www.fantasyfootballnerd.com/service/weekly-rankings/json/apiKey/QB/2/1/
+// https://www.fantasyfootballnerd.com/service/weekly-idp/json/apiKey/
+//https://www.fantasyfootballnerd.com/service/weekly-projections/json/apiKey/QB/1/
+//https://www.fantasyfootballnerd.com/service/draft-idp/json/apiKey/
+////https://www.fantasyfootballnerd.com/service/draft-rankings/json/apiKey/1/QB/
+//https://www.fantasyfootballnerd.com/service/draft-projections/json/apiKey/QB/
 
   this.h5 = 'Fantasy Football!!!'
  // because of 2 way binding...anytime the holidays array is updated (add/remove)..
@@ -27,13 +34,15 @@ app.controller('MainController', [ '$http', function($http) {
   this.formWP =[]
   this.weeklyIDP = ''
   this.formIDP = []
+
+  // this.formIDP[0] + '/' + this.formIDP[1] + '/'
   // this.editBlog = {};
   // this.tools = [] //fill with buttons
   //DRAFT TOOLS
 this.draftRankings = () => {
   console.log(this.createFormDR);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormDR,
     ppr: this.createFormDRCheck}
@@ -51,7 +60,7 @@ this.draftRankings = () => {
 this.draftProjections = () => {
   console.log(this.createFormDP);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormDP,
     ppr: this.createFormDPCheck}
@@ -68,7 +77,7 @@ this.draftProjections = () => {
 this.draftIDP = () => {
   console.log(this.createFormIDPDraft);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormIDPDraft,
     ppr: this.createFormIDPDraftCheck}
@@ -86,7 +95,7 @@ this.draftIDP = () => {
 this.weeklyRankings = () => {
   console.log(this.createFormWR);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormWR,
     ppr: this.createFormWRCheck}
@@ -103,7 +112,7 @@ this.weeklyRankings = () => {
 this.weeklyDC = () => {
   console.log(this.createFormDC);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormDC,
     ppr: this.createFormDCCheck}
@@ -121,9 +130,24 @@ this.weeklyInjuries = () => {
   console.log(this.createFormInjuries);
   $http({
     method:'GET',
-    url:'https://www.fantasyfootballnerd.com/service/injuries/json/iqiam5yq7fm7/'
+    url:'/footballs/injuries'
   }).then(response => {
     returnedQuery = response.data
+    console.log(returnedQuery);
+    console.log(response.data);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+this.draftIDPCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/draftIDP'
+  }).then(response => {
+    returnedIDPCall = {};
+    returnedIDPCall = response.data
+    console.log(returnedIDPCall);
     console.log(response.data);
   }).catch(err => {
     console.log(err);
@@ -131,10 +155,11 @@ this.weeklyInjuries = () => {
 }
 
 
+
 this.weeklyWP = () => {
   console.log(this.createFormWP);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormWP,
     ppr: this.createFormWPCheck}
@@ -150,7 +175,7 @@ this.weeklyWP = () => {
 this.weeklyIDP = () => {
   console.log(this.createFormIDP);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormIDP,
     ppr: this.createFormIDPCheck}
@@ -162,6 +187,7 @@ this.weeklyIDP = () => {
     console.log(err);
   })
 }
+
 
 
   // createHoliday method
@@ -379,6 +405,7 @@ this.weeklyIDP = () => {
 
 ////////////////// weekly projections position filter same weekly filter options
 //https://www.fantasyfootballnerd.com/service/weekly-projections/json/apiKey/QB/1/
+
 // {
 //     "Week": 1,
 //     "Position": "QB",
