@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const request = require('request')
 const Football = require('../models/footballmods.js')
+const api = 'https://www.fantasyfootballnerd.com/service/'
+const apiKey = 'iqiam5yq7fm7'
 
 // INDEX
 
@@ -12,6 +14,54 @@ router.get('/injuries', (req, res) => {
   })
 })
 
+router.get('/depthCharts', (req, res) => {
+  request('https://www.fantasyfootballnerd.com/service/depth-charts/json/iqiam5yq7fm7/', (error, response, body) => {
+    console.log('error:', error);
+    res.json(response)
+  })
+})
+
+router.get('/weeklyRankings', (req, res) => {
+  request('https://www.fantasyfootballnerd.com/service/weekly-rankings/json/iqiam5yq7fm7/', (error, response, body) => {
+    console.log('error:', error);
+    res.json(response)
+  })
+})
+
+router.get('/weeklyIDP', (req, res) => {
+  request('https://www.fantasyfootballnerd.com/service/weekly-idp/json/iqiam5yq7fm7/', (error, response, body) => {
+    console.log('error:', error);
+    res.json(response)
+  })
+})
+
+router.get('/weeklyProjections', (req, res) => {
+  request('https://www.fantasyfootballnerd.com/service/weekly-projections/json/iqiam5yq7fm7/', (error, response, body) => {
+    console.log('error:', error);
+    res.json(response)
+  })
+})
+
+router.get('/draftIDP', (req, res) => {
+  request('https://www.fantasyfootballnerd.com/service/draft-idp/json/iqiam5yq7fm7/', (error, response, body) => {
+    console.log('error:', error);
+    res.json(response)
+  })
+})
+
+router.get('/draftRankings', (req, res) => {
+  request('https://www.fantasyfootballnerd.com/service/draft-rankings/json/iqiam5yq7fm7/', (error, response, body) => {
+    console.log('error:', error);
+    res.json(response)
+  })
+})
+
+router.get('/draftProjections', (req, res) => {
+  request('https://www.fantasyfootballnerd.com/service/draft-projections/json/iqiam5yq7fm7/', (error, response, body) => {
+    console.log('error:', error);
+    res.json(response)
+  })
+})
 
 
 router.get('/', (req, res) => {
