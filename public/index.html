@@ -25,9 +25,10 @@ draft projections fantasy points -->
 
 <!-- add our angular controller -->
 <body ng-controller='MainController as ctrl'>
+{{2+2}}
   <div class="container">
     <h1>Taco's Fantasy Football</h1>
-      {{2+2}}
+
 
 
 
@@ -35,7 +36,11 @@ draft projections fantasy points -->
     <div class="draftContainer">
       <h1> Draft Tools </h1>
       <button>Draft Rankings</button>
-
+        <form ng-submit="ctrl.draftRankings()">
+          <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
+          <input type="checkbox" ng-model="ctrl.createFormCheck" placeholder="check for PPR"/>
+          <input type="submit" value="Search Rankings" />
+        </form>
       <button>Draft Projections</button>
 
       <button>Draft IDP Rankings</button>
@@ -80,16 +85,18 @@ draft projections fantasy points -->
             </form>
             <h2>Go to "the app"</h2>
             <a href="#" ng-click="auth.goApp()">Click here</a>
-          <!-- <label for="text">Text </label>
-          <textarea class="edit-text-content u-full-width" ng-model="ctrl.editBlog.blog.text" id="text"></textarea>
+          </div>
+
+</body>
+
+</html>
 
 
-
-          <input type="submit" ng-click="ctrl.saveEditBlog(ctrl.editBlog.blog)" value="Update Blog" class="button-primary">
+          <!-- <input type="submit" ng-click="ctrl.saveEditBlog(ctrl.editBlog.blog)" value="Update Blog" class="button-primary">
           <button class="melon-button" ng-click="ctrl.cancelEditBlog(ctrl.editBlog.blog)"> Don't Update </button>
         </div>
       </form> -->
-      <div class="">
+      <!-- <div class="">
         <h3>Filter By:</h3><br>
         <button ng-click="toggleDraft()">DRAFT TOOLS</button><br>
       </div>
@@ -106,9 +113,9 @@ draft projections fantasy points -->
         <button ng-click="ctrl.editPlayer(player)" class="melon-button">Edit Draft Rank</button>
         <input type="number" ng-model="ctrl.editRank">
         <button ng-click="ctrl.saveEdit()">Save New Rank</button>
-      </div>
+      </div> -->
 
-    </div>
+
 
 <!-- <form class="new-post" ng-submit='ctrl.createBlog()'>
       <input type="text" ng-model='ctrl.createForm.title' placeholder="Blog name">
@@ -148,6 +155,3 @@ draft projections fantasy points -->
             <input type="text" ng-model="ctrl.editBlog.blog.tags" id="tags">
           </label>
         </div> -->
-  </body>
-
-</html>

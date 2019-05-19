@@ -3,10 +3,11 @@ const mongoose = require('mongoose');
 
 // change to what data we want to display
 const footballSchema = mongoose.Schema({
-  playerName: {type: String, required: true},
-  text: {type: String, required: true},
-  likes: {type: Number, default: 0},
-  tags: [{type: String}]
-}, {timestamps: true})
+  playerName: {type: String},
+  text: {type: String},
+
+  ppr: {type: Boolean, default: 1}
+
+})
 
 module.exports = mongoose.model('Football', footballSchema);
