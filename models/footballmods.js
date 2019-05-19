@@ -19,8 +19,8 @@ const footballSchema = mongoose.Schema({
   rushYards: {type: String},
   rushTD: {type: String},
   passAtt: {type: String},
-  ppr: {type: Boolean, default: 0}
-
+  ppr: {type: Boolean, default: 0},
+  photoUrl: {type: String}
 })
 
 module.exports = mongoose.model('Football', footballSchema);
