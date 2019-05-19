@@ -27,7 +27,7 @@ app.use(morgan('tiny'))                             //// Use morgan
 
 // Routes
 const footballController = require('./controllers/football.js');
-app.use('/TacosFantasyFootball', footballController);
+app.use('/football', footballController);
 
 // this will catch any route that doesn't exist
 app.get('*', (req, res) => {
