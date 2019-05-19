@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
 
 // CREATE
 router.post('/', (req, res) => {
+  console.log(req.body);
     Football.create( req.body, (err, createdFootball) => {
         res.json(createdFootball);
     });

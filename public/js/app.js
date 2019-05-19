@@ -1,133 +1,267 @@
 // create our angular app
+// const apiURL = 'https://www.fantasyfootballnerd.com/service/' + apiKey
+// const apiKey = iqiam5yq7fm7
 const app = angular.module('FootballsApp', [])
 // create our app controller
 app.controller('MainController', [ '$http', function($http) {
+
+
   this.h5 = 'Fantasy Football!!!'
  // because of 2 way binding...anytime the holidays array is updated (add/remove)..
  // this will trigger Angular to update the DOM
-  this.authToken = ''
-  this.blogs = []
-  this.blog = ''
-  this.createForm = {};
-  this.editBlog = {};
-  this.tools = [] //fill with buttons
+  // this.authToken = ''
+  // this.blogs = []
+  // this.blog = ''
+  this.createFormDR = ''
+  this.formDR = []
+  this.creatFormDP = ''
+  this.formDP = []
+  this.createFormIDPDraft = ''
+  this.formIDPDraft = []
+
+  this.createFormWR = ''
+  this.formWR = []
+  this.createFormDC = ''
+  this.formDC = []
+  this.weeklyWP = ''
+  this.formWP =[]
+  this.weeklyIDP = ''
+  this.formIDP = []
+  // this.editBlog = {};
+  // this.tools = [] //fill with buttons
+  //DRAFT TOOLS
+this.draftRankings = () => {
+  console.log(this.createFormDR);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormDR,
+    ppr: this.createFormDRCheck}
+  }).then(response => {
+    this.formDR.unshift(response.data)
+    this.createFormDR = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
 
 
 
-  function ctrl($scope) {
+this.draftProjections = () => {
+  console.log(this.createFormDP);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormDP,
+    ppr: this.createFormDPCheck}
+  }).then(response => {
+    this.formDP.unshift(response.data)
+    this.createFormDP = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
 
-    $scope.toggleDraft = function () {
-      $scope.state = !$scope.state;
-    };
-  }
+
+this.draftIDP = () => {
+  console.log(this.createFormIDPDraft);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormIDPDraft,
+    ppr: this.createFormIDPDraftCheck}
+  }).then(response => {
+    this.formIDPDraft.unshift(response.data)
+    this.createFormIDPDraft = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+///SEASON TOOLS
+
+this.weeklyRankings = () => {
+  console.log(this.createFormWR);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormWR,
+    ppr: this.createFormWRCheck}
+  }).then(response => {
+    this.formWR.unshift(response.data)
+    this.createFormWR = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
 
 
-  function ctrl($scope) {
+this.weeklyDC = () => {
+  console.log(this.createFormDC);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormDC,
+    ppr: this.createFormDCCheck}
+  }).then(response => {
+    this.formDC.unshift(response.data)
+    this.createFormDC = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
 
-    $scope.toggleSeason = function () {
-      $scope.state = !$scope.state;
-    };
-  }
+///////////////// CORS ISSUE FIX IT!!!!!
+this.weeklyInjuries = () => {
+  console.log(this.createFormInjuries);
+  $http({
+    method:'GET',
+    url:'https://www.fantasyfootballnerd.com/service/injuries/json/iqiam5yq7fm7/'
+  }).then(response => {
+    returnedQuery = response.data
+    console.log(response.data);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+
+this.weeklyWP = () => {
+  console.log(this.createFormWP);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormWP,
+    ppr: this.createFormWPCheck}
+  }).then(response => {
+    this.formWP.unshift(response.data)
+    this.createFormWP = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+this.weeklyIDP = () => {
+  console.log(this.createFormIDP);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormIDP,
+    ppr: this.createFormIDPCheck}
+  }).then(response => {
+    this.formIDP.unshift(response.data)
+    this.createFormIDP = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
 
 
   // createHoliday method
-  this.createBlog = () => {
-    this.createForm.tags = this.createForm.tags.split(' ')
-    console.log(this.createForm.tags);
-    $http({
-      method:'POST',
-      url:'/blogs',
-      data: this.createForm
-    }).then(response => {
-      // holiday was created successfully...what to no now?
-      // option 1: call the getHolidays method
-      // this.getHolidays()
-      // option 2: push object into holidays array
-      this.blogs.unshift(response.data)
-      this.createForm = {}
-      console.log(response)
-    }).catch(err => {
-      console.log(err)
-    })
-  } // closes createHoliday
+  // this.createBlog = () => {
+  //   this.createForm.tags = this.createForm.tags.split(' ')
+  //   console.log(this.createForm.tags);
+  //   $http({
+  //     method:'POST',
+  //     url:'/footballs',
+  //     data: this.createForm
+  //   }).then(response => {
+  //     // holiday was created successfully...what to no now?
+  //     // option 1: call the getHolidays method
+  //     // this.getHolidays()
+  //     // option 2: push object into holidays array
+  //     this.blogs.unshift(response.data)
+  //     this.createForm = {}
+  //     console.log(response)
+  //   }).catch(err => {
+  //     console.log(err)
+  //   })
+  // } // closes createHoliday
 
   // getHolidays method
   // get auth token
-  this.getBlogs = () => {
-    $http({
-      method: 'GET',
-      url: '/blogs'
-    }).then( response => {
-      this.authToken = response.data
-
-      this.blogs = response.data
-      this.blog = this.blogs[0]
-      console.log(this.blogs)
-    }).catch( err => { console.log(err)})
-  } // close getHolidays
-
-  // deleteHoliday method
-  this.deleteBlog = id => {
-    $http({
-      method:'Delete',
-      url: '/blogs/' + id
-      // the delete has been successful
-    }).then(response => {
-      console.log(response.data)
-      // target the object in the holidays array and delete it
-      // findIndex is a loop just like .forEach, .map, .filter, .reduce
-      const removeByIndex = this.blogs.findIndex(blog => blog._id === id)
-      // remove it from the array
-      this.blogs.splice(removeByIndex, 1)
-    }).catch(err => console.log(err))
-  } // close deleteHoliday
-
-  // updateCelebrated method
-  this.updateBlog = blog => {
-    $http({
-      method:'PUT',
-      url: '/blogs/' + blog._id,
-      data: blog
-    }).then(response => {
-      console.log(response.data.blog)
-
-    }).catch(err => console.log(err))
-  } // close updateCelebrated
-
-  // chooseOneHoliday method
-  this.chooseOneBlog = blog => {
-    this.blog = blog
-    console.log(this.blog.name)
-  }
-
-  this.increaseLikes = blog => {
-    blog.likes +=1;
-    this.updateBlog(blog)
-
-  }
-
-  // call the getHolidays method on page load
-  this.getBlogs()
-
-  //Edit and Modal
-  this.editBlogModal = (blog) => {
-    this.editBlog.modal = !this.editBlog.modal;
-    this.editBlog.blog = blog;
-    console.log(blog.tags);
-    let tempTags = blog.tags.slice(0);
-    this.editBlog.blog.tags = tempTags.join(' ');
-  }
-  this.saveEditBlog = (blog) => {
-    blog.tags = blog.tags.split(' ')
-    console.log(blog.tags);
-    this.updateBlog(blog);
-    this.editBlog = {};
-  }
-  this.cancelEditBlog = (blog) => {
-    this.editBlog = {};
-    console.log(blog);
-    this.getBlogs(blog);
-  }
+  // this.getBlogs = () => {
+  //   $http({
+  //     method: 'GET',
+  //     url: '/footballs'
+  //   }).then( response => {
+  //     this.authToken = response.data
+  //
+  //     this.blogs = response.data
+  //     this.blog = this.blogs[0]
+  //     console.log(this.blogs)
+  //   }).catch( err => { console.log(err)})
+  // } // close getHolidays
+  //
+  // // deleteHoliday method
+  // this.deleteBlog = id => {
+  //   $http({
+  //     method:'Delete',
+  //     url: '/footballs/' + id
+  //     // the delete has been successful
+  //   }).then(response => {
+  //     console.log(response.data)
+  //     // target the object in the holidays array and delete it
+  //     // findIndex is a loop just like .forEach, .map, .filter, .reduce
+  //     const removeByIndex = this.blogs.findIndex(blog => blog._id === id)
+  //     // remove it from the array
+  //     this.blogs.splice(removeByIndex, 1)
+  //   }).catch(err => console.log(err))
+  // } // close deleteHoliday
+  //
+  // // updateCelebrated method
+  // this.updateBlog = blog => {
+  //   $http({
+  //     method:'PUT',
+  //     url: '/blogs/' + blog._id,
+  //     data: blog
+  //   }).then(response => {
+  //     console.log(response.data.blog)
+  //
+  //   }).catch(err => console.log(err))
+  // } // close updateCelebrated
+  //
+  // // chooseOneHoliday method
+  // this.chooseOneBlog = blog => {
+  //   this.blog = blog
+  //   console.log(this.blog.name)
+  // }
+  //
+  // this.increaseLikes = blog => {
+  //   blog.likes +=1;
+  //   this.updateBlog(blog)
+  //
+  // }
+  //
+  // // call the getHolidays method on page load
+  // this.getBlogs()
+  //
+  // //Edit and Modal
+  // this.editBlogModal = (blog) => {
+  //   this.editBlog.modal = !this.editBlog.modal;
+  //   this.editBlog.blog = blog;
+  //   console.log(blog.tags);
+  //   let tempTags = blog.tags.slice(0);
+  //   this.editBlog.blog.tags = tempTags.join(' ');
+  // }
+  // this.saveEditBlog = (blog) => {
+  //   blog.tags = blog.tags.split(' ')
+  //   console.log(blog.tags);
+  //   this.updateBlog(blog);
+  //   this.editBlog = {};
+  // }
+  // this.cancelEditBlog = (blog) => {
+  //   this.editBlog = {};
+  //   console.log(blog);
+  //   this.getBlogs(blog);
+  // }
 
 
 }]) // closes app.controller
@@ -254,7 +388,7 @@ app.controller('MainController', [ '$http', function($http) {
 //             "playerId": "14",
 //             "position": "QB",
 //             "passAtt": "39.0",
-//             "passCmp": "25.0",
+//             "rushTD": "25.0",
 //             "passYds": "317.0",
 //             "passTD": "2.0",
 //             "passInt": "1.0",
