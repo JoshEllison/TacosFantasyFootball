@@ -1,7 +1,11 @@
 // create our angular app
+// const apiURL = 'https://www.fantasyfootballnerd.com/service/' + apiKey
+// const apiKey = iqiam5yq7fm7
 const app = angular.module('FootballsApp', [])
 // create our app controller
 app.controller('MainController', [ '$http', function($http) {
+
+
   this.h5 = 'Fantasy Football!!!'
  // because of 2 way binding...anytime the holidays array is updated (add/remove)..
  // this will trigger Angular to update the DOM
@@ -10,15 +14,29 @@ app.controller('MainController', [ '$http', function($http) {
   // this.blog = ''
   this.createFormDR = ''
   this.formDR = []
+  this.creatFormDP = ''
+  this.formDP = []
+  this.createFormIDPDraft = ''
+  this.formIDPDraft = []
+
+  this.createFormWR = ''
+  this.formWR = []
+  this.createFormDC = ''
+  this.formDC = []
+  this.weeklyWP = ''
+  this.formWP =[]
+  this.weeklyIDP = ''
+  this.formIDP = []
   // this.editBlog = {};
   // this.tools = [] //fill with buttons
+  //DRAFT TOOLS
 this.draftRankings = () => {
   console.log(this.createFormDR);
   $http({
     method:'POST',
     url:'/footballs',
     data: {position: this.createFormDR,
-    ppr: this.createFormCheck}
+    ppr: this.createFormDRCheck}
   }).then(response => {
     this.formDR.unshift(response.data)
     this.createFormDR = {}
@@ -28,6 +46,122 @@ this.draftRankings = () => {
   })
 }
 
+
+
+this.draftProjections = () => {
+  console.log(this.createFormDP);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormDP,
+    ppr: this.createFormDPCheck}
+  }).then(response => {
+    this.formDP.unshift(response.data)
+    this.createFormDP = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+
+this.draftIDP = () => {
+  console.log(this.createFormIDPDraft);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormIDPDraft,
+    ppr: this.createFormIDPDraftCheck}
+  }).then(response => {
+    this.formIDPDraft.unshift(response.data)
+    this.createFormIDPDraft = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+///SEASON TOOLS
+
+this.weeklyRankings = () => {
+  console.log(this.createFormWR);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormWR,
+    ppr: this.createFormWRCheck}
+  }).then(response => {
+    this.formWR.unshift(response.data)
+    this.createFormWR = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+
+this.weeklyDC = () => {
+  console.log(this.createFormDC);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormDC,
+    ppr: this.createFormDCCheck}
+  }).then(response => {
+    this.formDC.unshift(response.data)
+    this.createFormDC = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+///////////////// CORS ISSUE FIX IT!!!!!
+this.weeklyInjuries = () => {
+  console.log(this.createFormInjuries);
+  $http({
+    method:'GET',
+    url:'https://www.fantasyfootballnerd.com/service/injuries/json/iqiam5yq7fm7/'
+  }).then(response => {
+    returnedQuery = response.data
+    console.log(response.data);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+
+this.weeklyWP = () => {
+  console.log(this.createFormWP);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormWP,
+    ppr: this.createFormWPCheck}
+  }).then(response => {
+    this.formWP.unshift(response.data)
+    this.createFormWP = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+this.weeklyIDP = () => {
+  console.log(this.createFormIDP);
+  $http({
+    method:'POST',
+    url:'/footballs',
+    data: {position: this.createFormIDP,
+    ppr: this.createFormIDPCheck}
+  }).then(response => {
+    this.formIDP.unshift(response.data)
+    this.createFormIDP = {}
+    console.log(response);
+  }).catch(err => {
+    console.log(err);
+  })
+}
 
 
   // createHoliday method
