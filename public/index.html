@@ -1,17 +1,18 @@
 <!DOCTYPE html>
+<html lang="en" ng-app="FootballsApp">
 <head>
   <meta charset="utf-8">
-  <title>Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Taco's Fantasy Football</title>
   <!--import Angular  -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js" charset="utf-8"></script>
   <!-- import our app.js file -->
   <script src="js/app.js" charset="utf-8"></script>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<!-- add our angular controller -->
-
 <!-- create button for specific query ex draft rankings add check for filter ppr or non ppr. On click have modal pop up for query positions with drop down for all or single position in a form. have form on submit call function to query new call.    -->
 <!-- weekly rankings required week position and ppr 1 for yes ppr (check box) . results in array. so set variable to empty array to store results.data
 depth chart filter by team. Do 2 positions for everything but WR (3)
@@ -21,11 +22,102 @@ weekly projections position filter same weekly filter options
 idp draft rankings filter by position S LB DE CB DT
 draft rankings
 draft projections fantasy points -->
-<body ng-controller='MainController as ctrl'>
-  <!-- <div class="container">
-    <h1>My Blog</h1>
 
-    <form class="new-post" ng-submit='ctrl.createBlog()'>
+<!-- add our angular controller -->
+<body ng-controller='MainController as ctrl'>
+{{2+2}}
+  <div class="container">
+    <h1>Taco's Fantasy Football</h1>
+
+
+
+
+
+    <div class="draftContainer">
+      <h1> Draft Tools </h1>
+      <button>Draft Rankings</button>
+        <form ng-submit="ctrl.draftRankings()">
+          <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
+          <input type="checkbox" ng-model="ctrl.createFormCheck" placeholder="check for PPR"/>
+          <input type="submit" value="Search Rankings" />
+        </form>
+      <button>Draft Projections</button>
+
+      <button>Draft IDP Rankings</button>
+
+
+    </div>
+
+    <div class="seasonContainer">
+      <h2> Season Tools </h2>
+      <button ng-click="modalWeeklyRankings()">Weekly Rankings</button>
+
+
+      <button>Depth Chart</button>
+
+      <button>Injuries</button>
+
+      <button>Weekly Projections</button>
+
+      <button>IDP Weekly Projections</button>
+
+
+    </div>
+
+
+
+
+
+
+
+        <div ng-controller="AuthController as auth"
+        <h2>Create User</h2>
+            <form ng-submit="auth.createUser()">
+                <input type="text" ng-model="auth.username" />
+                <input type="password" ng-model="auth.password" />
+                <input type="submit" value="Create User" />
+            </form>
+            <h2>Log In</h2>
+            <form ng-submit="auth.logIn()">
+              <input type="text" ng-model="auth.username" />
+              <input type="password" ng-model="auth.password" />
+              <input type="submit" value="Log In">
+            </form>
+            <h2>Go to "the app"</h2>
+            <a href="#" ng-click="auth.goApp()">Click here</a>
+          </div>
+
+</body>
+
+</html>
+
+
+          <!-- <input type="submit" ng-click="ctrl.saveEditBlog(ctrl.editBlog.blog)" value="Update Blog" class="button-primary">
+          <button class="melon-button" ng-click="ctrl.cancelEditBlog(ctrl.editBlog.blog)"> Don't Update </button>
+        </div>
+      </form> -->
+      <!-- <div class="">
+        <h3>Filter By:</h3><br>
+        <button ng-click="toggleDraft()">DRAFT TOOLS</button><br>
+      </div>
+      ng-show="stateDraft"
+      <div class="">
+        <button ng-click="toggleSeason()">SEASON TOOLS</button><br>
+        ng-show="stateSeason"
+      </div>
+      <div class="">
+        <h3>Draft Cheat Sheet:</h3><br>
+        <img src="{{player.image}}" alt="{{player.name}}">
+        <h4>{{player.name}} - {{player.position}}</h4>
+        <button ng-click="ctrl.deletePlayer(player._id)" class="melon-button">Delete</button>
+        <button ng-click="ctrl.editPlayer(player)" class="melon-button">Edit Draft Rank</button>
+        <input type="number" ng-model="ctrl.editRank">
+        <button ng-click="ctrl.saveEdit()">Save New Rank</button>
+      </div> -->
+
+
+
+<!-- <form class="new-post" ng-submit='ctrl.createBlog()'>
       <input type="text" ng-model='ctrl.createForm.title' placeholder="Blog name">
       <textarea ng-model="ctrl.createForm.text" name="textarea" placeholder="Blog Post Text" rows="8"
         cols="80"></textarea>
@@ -36,7 +128,7 @@ draft projections fantasy points -->
     <div>
       <div ng-repeat="blog in ctrl.blogs" class="post-content">
         <div class="post-header">
-          <h3>{{blog.title}}</h3>
+          <h3>{{football.}}</h3>
           <div class="likes-tags">
             <h6 class="melon-button"> {{ blog.likes }} <span class='like-button' ng-click="ctrl.increaseLikes(blog)"> Like! </span> </h6>
             <h7> Tags: {{ blog.tags }}</h7>
@@ -62,20 +154,4 @@ draft projections fantasy points -->
           <label for="tags">Tags
             <input type="text" ng-model="ctrl.editBlog.blog.tags" id="tags">
           </label>
-        </div>
-
-        <label for="text">Text </label>
-        <textarea class="edit-text-content u-full-width" ng-model="ctrl.editBlog.blog.text" id="text"></textarea>
-
-
-
-        <input type="submit" ng-click="ctrl.saveEditBlog(ctrl.editBlog.blog)" value="Update Blog" class="button-primary">
-        <button class="melon-button" ng-click="ctrl.cancelEditBlog(ctrl.editBlog.blog)"> Don't Update </button>
-      </div>
-    </form>
-  </div> -->
-
-
-</body>
-
-</html>
+        </div> -->

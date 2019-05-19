@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const Football = require('../models/footballs.js')
+const Football = require('../models/footballmods.js')
 
 // INDEX
 router.get('/', (req, res) => {
@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
 
 // CREATE
 router.post('/', (req, res) => {
+  console.log(req.body);
     Football.create( req.body, (err, createdFootball) => {
         res.json(createdFootball);
     });
