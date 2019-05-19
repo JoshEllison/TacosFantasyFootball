@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const moment = require('moment');
 const morgan = require('morgan')
+const session = require('express-session');
 const db = mongoose.connection
 
 // Environment Variables
@@ -29,10 +30,17 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(morgan('tiny'))                           // returns middleware that only parses JSON
 app.use(express.static('public'))                   //static files
+app.use(session({
+    secret:'feedmeseymour',
+    resave: false,
+    saveUninitialized: false
+}));
 
+const userController = require('./controllers/users.js')
+app.use('/users', userController);
 
-
-                          //// Use morgan
+const sessionsController = require('./controllers/sessions.js');
+app.use('/sessions', sessionsController);
 
 
 // Routes
@@ -42,6 +50,17 @@ app.use('/footballs', footballController);
 // this will catch any route that doesn't exist
 app.get('*', (req, res) => {
     res.status(404).json('Sorry, page not found')
+})
+
+app.get('/footballs', (req, res)=>{
+    if(req.session.currentUser){
+        res.json(req.session.currentUser);
+    } else {
+        res.status(401).json({
+            status:401,
+            message:'not logged in'
+        })
+    }
 })
 
 app.listen(PORT, () => {
