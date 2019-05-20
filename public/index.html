@@ -34,7 +34,7 @@ draft projections fantasy points -->
 
     <div class="draftContainer">
       <h1> Draft Tools </h1>
-      <button>Draft Rankings</button>
+      <h5>Draft Rankings</h5>
         <form ng-submit="ctrl.draftRankings()">
           <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
           <input type="checkbox" ng-model="ctrl.createFormDRCheck" placeholder="check for PPR"/>
@@ -69,7 +69,7 @@ draft projections fantasy points -->
      <table> -->
 
 
-      <button>Draft Projections</button>
+      <h5>Draft Projections</h5>
         <form ng-submit="ctrl.draftProjections()">
           <input type="text" ng-model="ctrl.createFormDP" placeholder="Position"/>
           <input type="checkbox" ng-model="ctrl.createFormDPCheck" placeholder="check for PPR"/>
@@ -77,7 +77,7 @@ draft projections fantasy points -->
         </form>
 
         <div class="showBoard">
-          <div ng-repeat="data in ctrl.draftProjectionsCall" class="players">
+          <div ng-repeat="data in ctrl.dpData" class="players">
 
             <p>Name: {{data.displayName}}</p>
             <p>Team:  {{data.team}}</p>
@@ -96,7 +96,7 @@ draft projections fantasy points -->
           </div>
         </div>
 
-      <button>Draft IDP Rankings</button>
+      <h5>Draft IDP Rankings</h5>
 
       <form ng-submit="ctrl.draftIDP()">
         <input type="text" ng-model="ctrl.createFormIDPDraft" placeholder="Position"/>
@@ -104,40 +104,179 @@ draft projections fantasy points -->
         <input type="submit" value="Search Rankings" />
       </form>
 
-    </div>
+      <div class="showBoard">
+        <div ng-repeat="data in ctrl.idpData" class="players">
+
+          <p>Name: {{data.displayName}}</p>
+          <p>Team:  {{data.team}}</p>
+          <p>Position: {{data.position}}</p>
+          <p>Rank: {{data.overallRank}}</p>
+          <p>Bye Week: {{data.byeWeek}}</p>
+          <p>Fantasy Points: {{data.fantasyPoints}}</p>
+          <p>Completions: {{data.completions}}</p>
+          <p>Attempts: {{data.attempts}}</p>
+          <p>Passing TD's: {{data.passingTD}}</p>
+          <p>Passing Yards: {{data.passingYards}}</p>
+          <p>Passing INT's: {{data.passingInt}}</p>
+          <p>Rush Yards: {{data.rushYards}}</p>
+          <p>Rush TD's: {{data.rushTD}}</p>
+
+        </div>
+      </div>
+
+    </div>  <!-- END DRAFT CONTAINER -->
 
     <div class="seasonContainer">
       <h2> Season Tools </h2>
-      <button>Weekly Rankings</button>
+      <h5>Weekly Rankings</h5>
         <form ng-submit="ctrl.weeklyRankings()">
           <input type="text" ng-model="ctrl.createFormWR" placeholder="Position"/>
           <input type="checkbox" ng-model="ctrl.createFormWRCheck" placeholder="check for PPR"/>
           <input type="submit" value="Search Rankings" />
         </form>
 
-      <button>Depth Chart</button>
+        <div class="showBoard">
+          <div ng-repeat="data in ctrl.wrData" class="players">
+
+            <p>Name: {{data.displayName}}</p>
+            <p>Team:  {{data.team}}</p>
+            <p>Position: {{data.position}}</p>
+            <p>Rank: {{data.overallRank}}</p>
+            <p>Bye Week: {{data.byeWeek}}</p>
+            <p>Fantasy Points: {{data.fantasyPoints}}</p>
+            <p>Completions: {{data.completions}}</p>
+            <p>Attempts: {{data.attempts}}</p>
+            <p>Passing TD's: {{data.passingTD}}</p>
+            <p>Passing Yards: {{data.passingYards}}</p>
+            <p>Passing INT's: {{data.passingInt}}</p>
+            <p>Rush Yards: {{data.rushYards}}</p>
+            <p>Rush TD's: {{data.rushTD}}</p>
+
+          </div>
+        </div>
+
+      <h5>Depth Chart</h5>
         <form ng-submit="ctrl.weeklyDC()">
           <input type="text" ng-model="ctrl.createFormDC" placeholder="Position"/>
           <input type="checkbox" ng-model="ctrl.createFormDCCheck" placeholder="check for PPR"/>
           <input type="submit" value="Search Rankings" />
         </form>
+        <div class="showBoard">
+          <div ng-repeat="data in ctrl.dcData" class="players">
 
+            <p>Name: {{data.displayName}}</p>
+            <p>Team:  {{data.team}}</p>
+            <p>Position: {{data.position}}</p>
+            <p>Rank: {{data.overallRank}}</p>
+            <p>Bye Week: {{data.byeWeek}}</p>
+            <p>Fantasy Points: {{data.fantasyPoints}}</p>
+            <p>Completions: {{data.completions}}</p>
+            <p>Attempts: {{data.attempts}}</p>
+            <p>Passing TD's: {{data.passingTD}}</p>
+            <p>Passing Yards: {{data.passingYards}}</p>
+            <p>Passing INT's: {{data.passingInt}}</p>
+            <p>Rush Yards: {{data.rushYards}}</p>
+            <p>Rush TD's: {{data.rushTD}}</p>
 
+          </div>
+        </div>
+
+      <h5>Injuries</h5>
       <button ng-click="ctrl.weeklyInjuries()">Injuries</button><br>
+      <div class="showBoard">
+        <div ng-repeat="data in ctrl.iData" class="players">
 
-      <button>Weekly Projections</button>
+          <p>Name: {{data.displayName}}</p>
+          <p>Team:  {{data.team}}</p>
+          <p>Position: {{data.position}}</p>
+          <p>Rank: {{data.overallRank}}</p>
+          <p>Bye Week: {{data.byeWeek}}</p>
+          <p>Fantasy Points: {{data.fantasyPoints}}</p>
+          <p>Completions: {{data.completions}}</p>
+          <p>Attempts: {{data.attempts}}</p>
+          <p>Passing TD's: {{data.passingTD}}</p>
+          <p>Passing Yards: {{data.passingYards}}</p>
+          <p>Passing INT's: {{data.passingInt}}</p>
+          <p>Rush Yards: {{data.rushYards}}</p>
+          <p>Rush TD's: {{data.rushTD}}</p>
+
+        </div>
+      </div>
+
+
+      <h5>Weekly Projections</h5>
         <form ng-submit="ctrl.weeklyWP()">
           <input type="text" ng-model="ctrl.createFormWP" placeholder="Position"/>
           <input type="checkbox" ng-model="ctrl.createFormWPCheck" placeholder="check for PPR"/>
           <input type="submit" value="Search Rankings" />
         </form>
 
-      <button>IDP Weekly Projections</button>
+        <div class="showBoard">
+          <div ng-repeat="data in ctrl.wpData" class="players">
+
+            <p>Name: {{data.displayName}}</p>
+            <p>Team:  {{data.team}}</p>
+            <p>Position: {{data.position}}</p>
+            <p>Rank: {{data.overallRank}}</p>
+            <p>Bye Week: {{data.byeWeek}}</p>
+            <p>Fantasy Points: {{data.fantasyPoints}}</p>
+            <p>Completions: {{data.completions}}</p>
+            <p>Attempts: {{data.attempts}}</p>
+            <p>Passing TD's: {{data.passingTD}}</p>
+            <p>Passing Yards: {{data.passingYards}}</p>
+            <p>Passing INT's: {{data.passingInt}}</p>
+            <p>Rush Yards: {{data.rushYards}}</p>
+            <p>Rush TD's: {{data.rushTD}}</p>
+
+          </div>
+        </div>
+
+      <h5>IDP Weekly Projections</h5>
       <form ng-submit="ctrl.weeklyIDP()">
         <input type="text" ng-model="ctrl.createFormIDP" placeholder="Position"/>
         <input type="checkbox" ng-model="ctrl.createFormIDPCheck" placeholder="check for PPR"/>
         <input type="submit" value="Search Rankings" />
       </form>
+
+      <div class="showBoard">
+        <div ng-repeat="data in ctrl.wIDPData" class="players">
+
+          <p>Name: {{data.displayName}}</p>
+          <p>Team:  {{data.team}}</p>
+          <p>Position: {{data.position}}</p>
+          <p>Rank: {{data.overallRank}}</p>
+          <p>Bye Week: {{data.byeWeek}}</p>
+          <p>Fantasy Points: {{data.fantasyPoints}}</p>
+          <p>Completions: {{data.completions}}</p>
+          <p>Attempts: {{data.attempts}}</p>
+          <p>Passing TD's: {{data.passingTD}}</p>
+          <p>Passing Yards: {{data.passingYards}}</p>
+          <p>Passing INT's: {{data.passingInt}}</p>
+          <p>Rush Yards: {{data.rushYards}}</p>
+          <p>Rush TD's: {{data.rushTD}}</p>
+
+        </div>
+      </div>
+
+      <!-- <div class="showBoard">
+        <div ng-repeat="data in ctrl.drData" class="players">
+
+          <p>Name: {{data.displayName}}</p>
+          <p>Team:  {{data.team}}</p>
+          <p>Position: {{data.position}}</p>
+          <p>Rank: {{data.overallRank}}</p>
+          <p>Bye Week: {{data.byeWeek}}</p>
+          <p>Fantasy Points: {{data.fantasyPoints}}</p>
+          <p>Completions: {{data.completions}}</p>
+          <p>Attempts: {{data.attempts}}</p>
+          <p>Passing TD's: {{data.passingTD}}</p>
+          <p>Passing Yards: {{data.passingYards}}</p>
+          <p>Passing INT's: {{data.passingInt}}</p>
+          <p>Rush Yards: {{data.rushYards}}</p>
+          <p>Rush TD's: {{data.rushTD}}</p>
+
+        </div>
+      </div> -->
 
     </div>
 

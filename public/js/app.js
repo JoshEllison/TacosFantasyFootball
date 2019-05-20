@@ -43,7 +43,12 @@ app.controller('MainController', [ '$http', function($http) {
 
   this.drDatas = []
   this.drData = ''
-
+  this.wpData = ''
+  this.dpData = ''
+  this.idpData = ''
+  this.wrData = ''
+  this.dcData = ''
+  this.iData = ''
   // this.formIDP[0] + '/' + this.formIDP[1] + '/'
   // this.editBlog = {};
   // this.tools = [] //fill with buttons
@@ -72,9 +77,9 @@ this.callDraftRankings = () => {
     method:'GET',
     url:'/footballs/draftRankings/'+ this.createFormDR
   }).then(response => {
-    let parseData = JSON.parse(response.data.body)
+    let parseDataDR = JSON.parse(response.data.body)
     console.log(parseData);
-    this.drData = parseData.DraftRankings
+    this.drData = parseDataDR.DraftRankings
     console.log(this.drData);
 
 
@@ -105,9 +110,9 @@ this.draftProjectionsCall = () => {
     method:'GET',
     url:'/footballs/draftProjections/'+ this.createFormDP
   }).then(response => {
-    this.draftProjectionsCalls = response.data
-
-    console.log(this.draftProjectionsCalls);
+    let parseDataDP = JSON.parse(response.data.body)
+    this.dpData = parseDataDP.DraftProjections
+    console.log(this.dpData);
   }).catch(err => {
     console.log(err);
   })
@@ -137,9 +142,9 @@ this.draftIDPCall = () => {
     url:'/footballs/draftIDP/'
   }).then(response => {
 
-    this.idpCallDrafts = response.data
-    this.idpCallDraft = this.idpCallDrafts[0]
-    console.log(this.idpCallDrafts);
+    let parseDataIDP = JSON.parse(response.data.body)
+    this.idpData = parseDataIDP.week
+    console.log(this.idpData);
 
   }).catch(err => {
     console.log(err);
@@ -169,9 +174,9 @@ this.weeklyRankingsCall = () => {
     method:'GET',
     url:'/footballs/weeklyRankings/'+ this.createFormWR
   }).then(response => {
-    this.weeklyRankingsCalls = response.data
-
-    console.log(this.weeklyRankingsCalls);
+    let parseDataWR = JSON.parse(response.data.body)
+    this.wrData = parseDataWR
+    console.log(this.wrData);
   }).catch(err => {
     console.log(err);
   })
@@ -198,9 +203,9 @@ this.weeklyDCCall = () => {
     method:'GET',
     url:'/footballs/depthCharts/'
   }).then(response => {
-    this.weeklyDCCalls = response.data
-
-    console.log(this.weeklyDCCalls);
+    let parseDataDC = JSON.parse(response.data.body)
+    this.dcData = parseDataDC.DepthCharts
+    console.log(this.dcData);
   }).catch(err => {
     console.log(err);
   })
@@ -212,8 +217,9 @@ this.weeklyInjuries = () => {
     method:'GET',
     url:'/footballs/injuries'
   }).then(response => {
-    this.weeklyInjuriesCalls = response.data
-    console.log(this.weeklyInjuriesCalls);
+    let parseDataI = JSON.parse(response.data.body)
+    this.iData = parseDataI
+    console.log(this.iData);
 
   }).catch(err => {
     console.log(err);
@@ -245,9 +251,9 @@ this.weeklyWPCall = () => {
     method:'GET',
     url:'/footballs/weeklyProjections/' + this.createFormWP
   }).then(response => {
-    this.weeklyWPCalls = response.data
-
-    console.log(this.weeklyWPCalls);
+    let parseDataWP = JSON.parse(response.data.body)
+    this.wpData = parseDataWP
+    console.log(this.wpData);
   }).catch(err => {
     console.log(err);
   })
@@ -275,9 +281,9 @@ this.weeklyIDPCall = () => {
     method:'GET',
     url:'/footballs/weeklyIDP/' + this.createFormIDP
   }).then(response => {
-    this.weeklyIDPCalls = response.data
-
-    console.log(this.weeklyIDPCalls);
+    let parseDataWIDP = JSON.parse(response.data.body)
+    this.wIDPData = parseDataWIDP
+    console.log(this.wIDPData);
   }).catch(err => {
     console.log(err);
   })
