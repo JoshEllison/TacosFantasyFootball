@@ -1,10 +1,10 @@
 // create our angular app
 // const apiURL = 'https://www.fantasyfootballnerd.com/service/' + apiKey
 // const apiKey = iqiam5yq7fm7
-const app = angular.module('FootballsApp', [])
+const app = angular.module('FootballsApp', []);
 // create our app controller
 app.controller('MainController', [ '$http', function($http) {
-
+const controller = this;
 //
 //https://www.fantasyfootballnerd.com/service/weekly-rankings/json/apiKey/QB/2/1/
 // https://www.fantasyfootballnerd.com/service/weekly-idp/json/apiKey/
@@ -12,13 +12,14 @@ app.controller('MainController', [ '$http', function($http) {
 //https://www.fantasyfootballnerd.com/service/draft-idp/json/apiKey/
 ////https://www.fantasyfootballnerd.com/service/draft-rankings/json/apiKey/1/QB/
 //https://www.fantasyfootballnerd.com/service/draft-projections/json/apiKey/QB/
-
   this.h5 = 'Fantasy Football!!!'
  // because of 2 way binding...anytime the holidays array is updated (add/remove)..
  // this will trigger Angular to update the DOM
   // this.authToken = ''
   // this.blogs = []
   // this.blog = ''
+  this.players = [];
+  this.indexOfEditFormToShow = null;
   this.createFormDR = ''
   this.formDR = []
   this.creatFormDP = ''
@@ -387,9 +388,73 @@ this.weeklyIDPCall = () => {
   //   console.log(blog);
   //   this.getBlogs(blog);
   // }
+// create new , edit, and delete players in draft board
+this.createPlayer = function(){
+    $http({
+      method: 'POST',
+      url: '/footballs',
+      data: {
+        displayName: this.displayName,
+        team: this.team,
+        position: this.position,
+        rank: this.rank,
+        byeWeek: this.byeWeek
+      }
+    }).then(function(response) {
+      controller.players.push(response.data);
+      console.log(response);
+    }), function (error){
+      console.log(error);
+    }
+  }
+  this.getPlayers = function(){
+    $http({
+      method: 'GET',
+      url: '/footballs',
+    }).then(function(response){
+      controller.players = response.data;
+    },  function(){
+      console.log('error');
+    });
+  };
+  this.deletePlayer = function(player){
+      $http({
+          method:'DELETE',
+          url: '/footballs/' + player._id
+      }).then(
+          function(response){
+              controller.getPlayers();
+          },
+          function(error){
+
+          }
+      );
+  }
+  this.editPlayer = function(player){
+      $http({
+          method:'PUT',
+          url: '/footballs/' + player._id,
+          data: {
+              displayName: this.updatedDisplayName,
+              team: this.updatedTeam,
+              position: this.updatedPosition,
+              rank: this.updatedRank,
+              byeWeek: this.updatedByeWeek
+          }
+      }).then(
+          function(response){
+              controller.getPlayers();
+              controller.indexOfEditFormToShow = null;
+          },
+          function(error){
+
+          }
+      );
+  }
 
 
-}]) // closes app.controller
+  this.getPlayers();
+}]); // closes app.controller
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -614,6 +679,8 @@ const controller = this;
         url: '/footballs'
     }).then(function(response){
         controller.loggedInUsername = response.data.username;
+        console.log(response);
+        console.log(controller.loggedInUsername);
     }, function(){
         console.log('error');
     });

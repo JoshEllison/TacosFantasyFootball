@@ -7,6 +7,8 @@
   <title>Taco's Fantasy Football</title>
   <!--import Angular  -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js" charset="utf-8"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.min.js" charset="utf-8"></script> -->
+
   <!-- import our app.js file -->
   <script src="js/app.js" charset="utf-8"></script>
   <link rel="stylesheet" href="css/normalize.css">
@@ -25,16 +27,21 @@ draft projections fantasy points -->
 
 <!-- add our angular controller -->
 <body ng-controller='MainController as ctrl'>
-{{2+2}}
+   <!-- <div ng-view></div> -->
+  <div class="flex">
   <div class="container">
     <h1>Taco's Fantasy Football</h1>
 
 
 
 
-
+<header>
+  <h1> Draft Tools </h1>
+  <nav>
+    <a ng-if="!ctrl.user.logged " ng-click="ctrl.openLogin()" class="menuItem menuLink headerLink ng-scope" href="#">Login</a>
+    </nav>
+    </header>
     <div class="draftContainer">
-      <h1> Draft Tools </h1>
       <h5>Draft Rankings</h5>
         <form ng-submit="ctrl.draftRankings()">
           <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
@@ -280,14 +287,42 @@ draft projections fantasy points -->
       </div> -->
 
     </div>
+<div class ="container">
+  <h2> Draft Board </h2>
+  <form ng-submit="ctrl.createPlayer()"class="">
+    <input ng-model="ctrl.displayName" type="text" placeholder="Full Name">
+      <input ng-model="ctrl.team" type="text" placeholder="Team Name">
+        <input ng-model="ctrl.position" type="text" placeholder="Position">
+          <input ng-model="ctrl.rank" type="number" placeholder="Rank">
+            <input ng-model="ctrl.byeWeek" type="number"  placeholder="Bye Week">
+            <input type="submit" value="Add New Player">
+  </form>
+<div ng-repeat="player in ctrl.players">
+  <p> {{ player.displayName }}</p>
+  <p> {{ player.team }}</p>
+  <p> {{ player.position }}</p>
+  <p> {{ player.rank }} </p>
+  <p> {{ player.byeWeek }} </p>
+<button ng-click="ctrl.deletePlayer(player)">X</button>
+<form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editPlayer(player)">
+      <input type="text" ng-model="ctrl.updatedDisplayName" placeholder="Player Name">
+      <input type="text" ng-model="ctrl.updatedTeam" placeholder="Team Name">
+      <input type="text" ng-model="ctrl.updatedPosition" placeholder="Position">
+      <input type="text" ng-model="ctrl.updatedRank" placeholder="Rank">
+      <input type="text" ng-model="ctrl.updatedByeWeek" placeholder="Bye Week">
+      <input type="submit" value="Update!">
+  </form>
+  <a href="#" ng-click="ctrl.indexOfEditFormToShow = $index">Update!</a>
+</div>
+
+
+  </div>
 
 
 
 
 
-
-
-        <div ng-controller="AuthController as auth"
+        <!-- <div ng-controller="AuthController as auth"
         <h2>Create User</h2>
             <form ng-submit="auth.createUser()">
                 <input type="text" ng-model="auth.createUsername" />
@@ -303,13 +338,14 @@ draft projections fantasy points -->
             <form ng-submit="auth.logOut()">
               <input type="submit" value=" Logout">
             </form>
-            <h2>Go to "the app"</h2>
+            <!-- <h2>Go to "the app"</h2>
             <a href="#" ng-click="auth.goApp()">Click here</a>
-            <div ng-if="auth.logggedInUsername">
-               Welcome, {{ auth.logggedInUsername }}
-            </div>
-          </div>
+            <!-- <div ng-if="auth.logggedInUsername"> -->
+               <!-- Welcome, {{ auth.logggedInUsername }} -->
+            <!-- </div> -->
 
+</div>
+</div>
 </body>
 
 </html>
