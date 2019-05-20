@@ -1,7 +1,7 @@
 // create our angular app
 // const apiURL = 'https://www.fantasyfootballnerd.com/service/' + apiKey
 // const apiKey = iqiam5yq7fm7
-const app = angular.module('FootballsApp', [])
+const app = angular.module('FootballsApp', []);
 // create our app controller
 app.controller('MainController', [ '$http', function($http) {
 const controller = this;

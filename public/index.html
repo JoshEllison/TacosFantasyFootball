@@ -7,6 +7,8 @@
   <title>Taco's Fantasy Football</title>
   <!--import Angular  -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js" charset="utf-8"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.min.js" charset="utf-8"></script> -->
+
   <!-- import our app.js file -->
   <script src="js/app.js" charset="utf-8"></script>
   <link rel="stylesheet" href="css/normalize.css">
@@ -25,6 +27,8 @@ draft projections fantasy points -->
 
 <!-- add our angular controller -->
 <body ng-controller='MainController as ctrl'>
+   <!-- <div ng-view></div> -->
+  <div class="flex">
   <div class="container">
     <h1>Taco's Fantasy Football</h1>
 
@@ -318,7 +322,7 @@ draft projections fantasy points -->
 
 
 
-        <div ng-controller="AuthController as auth"
+        <!-- <div ng-controller="AuthController as auth"
         <h2>Create User</h2>
             <form ng-submit="auth.createUser()">
                 <input type="text" ng-model="auth.createUsername" />
@@ -334,13 +338,14 @@ draft projections fantasy points -->
             <form ng-submit="auth.logOut()">
               <input type="submit" value=" Logout">
             </form>
-            <h2>Go to "the app"</h2>
+            <!-- <h2>Go to "the app"</h2>
             <a href="#" ng-click="auth.goApp()">Click here</a>
-            <div ng-if="auth.logggedInUsername">
-               Welcome, {{ auth.logggedInUsername }}
-            </div>
-          </div>
+            <!-- <div ng-if="auth.logggedInUsername"> -->
+               <!-- Welcome, {{ auth.logggedInUsername }} -->
+            <!-- </div> -->
 
+</div>
+</div>
 </body>
 
 </html>
