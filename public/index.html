@@ -93,7 +93,25 @@ draft projections fantasy points -->
     </div>
 
 
-
+      <div class="draftBoard">
+        <div class="player" ng-repeat=''>
+          <img src="{{ctrl.createFormDR.photoUrl}}" alt="{{ctrl.createFormDR.displayName}}">
+          <p>Name: {{ctrl. createFormDR.displayName}}</p>
+          <p>Team:  {{ctrl.createFormDR.team}}</p>
+          <p>Position: {{ctrl.createFormDR.position}}</p>
+          <p>Bye Week: {{ctrl.createFormDR.byeWeek}}</p>
+          <p>Rank: {{ctrl.createFormDR.overallRank}}</p>
+          <p>Fantasy Points: {{ctrl.createFormDR.fantasyPoints}}</p>
+          <p>Completions: {{ctrl.createFormDR.completions}}</p>
+          <p>Attempts: {{ctrl.createFormDR.attempts}}</p>
+          <p>Passing TD's: {{ctrl.createFormDR.passingTD}}</p>
+          <p>Passing Yards: {{ctrl.createFormDR.passingYards}}</p>
+          <p>Passing INT's: {{ctrl.createFormDR.passingInt}}</p>
+          <p>Rush Yards: {{ctrl.createFormDR.rushYards}}</p>
+          <p>Rush TD's: {{ctrl.createFormDR.rushTD}}</p>
+          <!-- <p>Pass Att's: {{this.passAtt}}</p> -->
+        </div>
+      </div>
 
 
 
@@ -116,8 +134,8 @@ draft projections fantasy points -->
             </form>
             <h2>Go to "the app"</h2>
             <a href="#" ng-click="auth.goApp()">Click here</a>
-            <div ng-if="auth.loggedInUsername">
-               Welcome, {{ auth.loggedInUsername }}
+            <div ng-if="auth.loginUsername">
+               Welcome, {{ this.loginUsername }}
             </div>
           </div>
 
