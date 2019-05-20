@@ -273,7 +273,7 @@ this.weeklyIDPCall = () => {
     url:'/footballs/weeklyIDP/' + this.createFormIDP
   }).then(response => {
     this.weeklyIDPCalls = response.data
-  
+
     console.log(this.weeklyIDPCalls);
   }).catch(err => {
     console.log(err);
@@ -602,9 +602,11 @@ const controller = this;
   this.goApp = function(){
     $http({
         method:'GET',
-        url: '/footballs'
+        url: '/'
     }).then(function(response){
         controller.loggedInUsername = response.data.username;
+        console.log(response);
+        console.log(controller.loggedInUsername);
     }, function(){
         console.log('error');
     });
