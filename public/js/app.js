@@ -73,7 +73,7 @@ this.callDraftRankings = () => {
     url:'/footballs/draftRankings/'+ this.createFormDRCheck
   }).then(response => {
     this.draftRankingsCalls = response.data
-    this.draftRankingsCall = this.draftRankingsCalls[0]
+
     console.log(this.draftRankingsCalls);
   }).catch(err => {
     console.log(err);
@@ -103,7 +103,7 @@ this.draftProjectionsCall = () => {
     url:'/footballs/draftProjections/'+ this.createFormDP
   }).then(response => {
     this.draftProjectionsCalls = response.data
-    this.draftProjectionsCall = this.draftProjectionsCalls[0]
+
     console.log(this.draftProjectionsCalls);
   }).catch(err => {
     console.log(err);
@@ -131,11 +131,11 @@ this.draftIDPCall = () => {
 
   $http({
     method:'GET',
-    url:'/footballs/draftIDP/' + this.createFormIDPDraft
+    url:'/footballs/draftIDP/'
   }).then(response => {
 
     this.idpCallDrafts = response.data
-    this.idpCallDraft = this.idpCallDrafts[0]
+
     console.log(this.idpCallDrafts);
 
   }).catch(err => {
@@ -167,7 +167,7 @@ this.weeklyRankingsCall = () => {
     url:'/footballs/weeklyRankings/'+ this.createFormWR
   }).then(response => {
     this.weeklyRankingsCalls = response.data
-    this.weeklyRankingsCall = this.weeklyRankingsCalls[0]
+
     console.log(this.weeklyRankingsCalls);
   }).catch(err => {
     console.log(err);
@@ -196,7 +196,7 @@ this.weeklyDCCall = () => {
     url:'/footballs/depthCharts/'
   }).then(response => {
     this.weeklyDCCalls = response.data
-    this.weeklyDCCall = this.weeklyDCCalls[0]
+
     console.log(this.weeklyDCCalls);
   }).catch(err => {
     console.log(err);
@@ -209,9 +209,9 @@ this.weeklyInjuries = () => {
     method:'GET',
     url:'/footballs/injuries'
   }).then(response => {
-    returnedQuery = response.data
-    console.log(returnedQuery);
-    console.log(response.data);
+    this.weeklyInjuriesCalls = response.data
+    console.log(this.weeklyInjuriesCalls);
+
   }).catch(err => {
     console.log(err);
   })
@@ -243,7 +243,7 @@ this.weeklyWPCall = () => {
     url:'/footballs/weeklyProjections/' + this.createFormWP
   }).then(response => {
     this.weeklyWPCalls = response.data
-    this.weeklyWPCall = this.weeklyWPCalls[0]
+
     console.log(this.weeklyWPCalls);
   }).catch(err => {
     console.log(err);
@@ -273,7 +273,7 @@ this.weeklyIDPCall = () => {
     url:'/footballs/weeklyIDP/' + this.createFormIDP
   }).then(response => {
     this.weeklyIDPCalls = response.data
-    this.weeklyIDPCall = this.weeklyIDPCalls[0]
+  
     console.log(this.weeklyIDPCalls);
   }).catch(err => {
     console.log(err);

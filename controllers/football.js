@@ -45,9 +45,9 @@ router.get('/weeklyProjections/:position', (req, res) => {
   })
 })
 
-router.get('/draftIDP/:position', (req, res) => {
+router.get('/draftIDP/', (req, res) => {
   console.log(req.params);
-  request('https://www.fantasyfootballnerd.com/service/draft-idp/json/iqiam5yq7fm7/' + req.params.position + '/', (error, response, body) => {
+  request('https://www.fantasyfootballnerd.com/service/draft-idp/json/iqiam5yq7fm7/', (error, response, body) => {
     console.log('error:', error);
     res.json(response)
   })
