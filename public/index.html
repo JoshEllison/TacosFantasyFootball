@@ -31,9 +31,13 @@ draft projections fantasy points -->
 
 
 
-
+<header>
+  <h1> Draft Tools </h1>
+  <nav>
+    <a ng-if="!ctrl.user.logged " ng-click="ctrl.openLogin()" class="menuItem menuLink headerLink ng-scope" href="#">Login</a>
+    </nav>
+    </header>
     <div class="draftContainer">
-      <h1> Draft Tools </h1>
       <h5>Draft Rankings</h5>
         <form ng-submit="ctrl.draftRankings()">
           <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
@@ -279,8 +283,36 @@ draft projections fantasy points -->
       </div> -->
 
     </div>
+<div class ="container">
+  <h2> Draft Board </h2>
+  <form ng-submit="ctrl.createPlayer()"class="">
+    <input ng-model="ctrl.displayName" type="text" placeholder="Full Name">
+      <input ng-model="ctrl.team" type="text" placeholder="Team Name">
+        <input ng-model="ctrl.position" type="text" placeholder="Position">
+          <input ng-model="ctrl.rank" type="number" placeholder="Rank">
+            <input ng-model="ctrl.byeWeek" type="number"  placeholder="Bye Week">
+            <input type="submit" value="Add New Player">
+  </form>
+<div ng-repeat="player in ctrl.players">
+  <p> {{ player.displayName }}</p>
+  <p> {{ player.team }}</p>
+  <p> {{ player.position }}</p>
+  <p> {{ player.rank }} </p>
+  <p> {{ player.byeWeek }} </p>
+<button ng-click="ctrl.deletePlayer(player)">X</button>
+<form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editPlayer(player)">
+      <input type="text" ng-model="ctrl.updatedDisplayName" placeholder="Player Name">
+      <input type="text" ng-model="ctrl.updatedTeam" placeholder="Team Name">
+      <input type="text" ng-model="ctrl.updatedPosition" placeholder="Position">
+      <input type="text" ng-model="ctrl.updatedRank" placeholder="Rank">
+      <input type="text" ng-model="ctrl.updatedByeWeek" placeholder="Bye Week">
+      <input type="submit" value="Update!">
+  </form>
+  <a href="#" ng-click="ctrl.indexOfEditFormToShow = $index">Update!</a>
+</div>
 
 
+  </div>
 
 
 

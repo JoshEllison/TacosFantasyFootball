@@ -8,6 +8,14 @@ body {
   font-family: 'Patua One', cursive;
   background-size: cover;
 }
+.showBoard{
+  width: 25%;
+  overflow: auto;
+  height: 300px;
+}
+.container{
+  margin-left: 30px;
+}
 
 /*
 #96858F - dusty
