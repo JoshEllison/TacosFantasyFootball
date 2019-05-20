@@ -43,7 +43,8 @@ draft projections fantasy points -->
         </form>
 
         <div class="draftBoard">
-          <div ng-repeat="data in ctrl.drDatas" class="player">
+          <div ng-repeat="data in ctrl.drData" class="player">
+              
                    <p>Name: {{data.displayName}}</p>
             <p>Team:  {{ctrl.drData.team}}</p>
             <p>Position: {{this.drData.position}}</p>
