@@ -42,23 +42,23 @@ draft projections fantasy points -->
           <input type="submit" value="Search Rankings" />
         </form>
 
-        <div class="draftBoard">
-          <div ng-repeat="data in ctrl.drData" class="player">
-              
-                   <p>Name: {{data.displayName}}</p>
-            <p>Team:  {{ctrl.drData.team}}</p>
-            <p>Position: {{this.drData.position}}</p>
-            <p>Rank: {{ctrl.drDatas.overallRank}}</p>
-            <p>Bye Week: {{ctrl.draftRankingsCalls.byeWeek}}</p>
-            <p>Fantasy Points: {{ctrl.draftRankingsCalls.fantasyPoints}}</p>
-            <p>Completions: {{ctrl.draftRankingsCalls.completions}}</p>
-            <p>Attempts: {{ctrl.draftRankingsCalls.attempts}}</p>
-            <p>Passing TD's: {{ctrl.draftRankingsCalls.passingTD}}</p>
-            <p>Passing Yards: {{ctrl.draftRankingsCalls.passingYards}}</p>
-            <p>Passing INT's: {{ctrl.draftRankingsCalls.passingInt}}</p>
-            <p>Rush Yards: {{ctrl.draftRankingsCalls.rushYards}}</p>
-            <p>Rush TD's: {{ctrl.draftRankingsCalls.rushTD}}</p>
-                  <p>Pass Att's: {{this.passAtt}}</p>
+        <div class="showBoard">
+          <div ng-repeat="data in ctrl.drData" class="players">
+
+            <p>Name: {{data.displayName}}</p>
+            <p>Team:  {{data.team}}</p>
+            <p>Position: {{data.position}}</p>
+            <p>Rank: {{data.overallRank}}</p>
+            <p>Bye Week: {{data.byeWeek}}</p>
+            <p>Fantasy Points: {{data.fantasyPoints}}</p>
+            <p>Completions: {{data.completions}}</p>
+            <p>Attempts: {{data.attempts}}</p>
+            <p>Passing TD's: {{data.passingTD}}</p>
+            <p>Passing Yards: {{data.passingYards}}</p>
+            <p>Passing INT's: {{data.passingInt}}</p>
+            <p>Rush Yards: {{data.rushYards}}</p>
+            <p>Rush TD's: {{data.rushTD}}</p>
+
           </div>
         </div>
 
@@ -76,6 +76,27 @@ draft projections fantasy points -->
           <input type="checkbox" ng-model="ctrl.createFormDPCheck" placeholder="check for PPR"/>
           <input type="submit" value="Search Rankings" />
         </form>
+
+        <div class="showBoard">
+          <div ng-repeat="data in ctrl.draftProjectionsCall" class="players">
+
+            <p>Name: {{data.displayName}}</p>
+            <p>Team:  {{data.team}}</p>
+            <p>Position: {{data.position}}</p>
+            <p>Rank: {{data.overallRank}}</p>
+            <p>Bye Week: {{data.byeWeek}}</p>
+            <p>Fantasy Points: {{data.fantasyPoints}}</p>
+            <p>Completions: {{data.completions}}</p>
+            <p>Attempts: {{data.attempts}}</p>
+            <p>Passing TD's: {{data.passingTD}}</p>
+            <p>Passing Yards: {{data.passingYards}}</p>
+            <p>Passing INT's: {{data.passingInt}}</p>
+            <p>Rush Yards: {{data.rushYards}}</p>
+            <p>Rush TD's: {{data.rushTD}}</p>
+
+          </div>
+        </div>
+
       <button>Draft IDP Rankings</button>
 
       <form ng-submit="ctrl.draftIDP()">
@@ -145,8 +166,8 @@ draft projections fantasy points -->
             </form>
             <h2>Go to "the app"</h2>
             <a href="#" ng-click="auth.goApp()">Click here</a>
-            <div ng-if="auth.loginUsername">
-               Welcome, {{ this.loginUsername }}
+            <div ng-if="auth.logggedInUsername">
+               Welcome, {{ auth.logggedInUsername }}
             </div>
           </div>
 
