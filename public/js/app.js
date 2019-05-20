@@ -41,7 +41,7 @@ app.controller('MainController', [ '$http', function($http) {
   this.draftProjectionsCalls = []
   this.draftProjectionsCall = ''
 
-  this.drDatas = {}
+  this.drDatas = []
   this.drData = ''
 
   // this.formIDP[0] + '/' + this.formIDP[1] + '/'
@@ -72,9 +72,12 @@ this.callDraftRankings = () => {
     method:'GET',
     url:'/footballs/draftRankings/'+ this.createFormDR
   }).then(response => {
-    this.drData = [response.data];
-    this.drDatas = this.drData
-    console.log(this.drDatas);
+    let parseData = JSON.parse(response.data.body)
+    console.log(parseData);
+    this.drData = parseData.DraftRankings
+    console.log(this.drData);
+
+
   }).catch(err => {
     console.log(err);
   })
