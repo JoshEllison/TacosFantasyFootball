@@ -19,7 +19,7 @@ const footballSchema = mongoose.Schema({
   rushYards: {type: String},
   rushTD: {type: String},
   passAtt: {type: String},
-  ppr: {type: Boolean, default: 0},
+  PPR: {type: String},
   photoUrl: {type: String}
 })
 

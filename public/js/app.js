@@ -35,45 +35,81 @@ app.controller('MainController', [ '$http', function($http) {
   this.weeklyIDP = ''
   this.formIDP = []
 
+  this.idpCallDrafts = []
+  this.idpCallDraft = ''
+
+  this.draftProjectionsCalls = []
+  this.draftProjectionsCall = ''
+
+  this.draftRankingsCalls = []
+  this.draftRankingsCall = ''
+
   // this.formIDP[0] + '/' + this.formIDP[1] + '/'
   // this.editBlog = {};
   // this.tools = [] //fill with buttons
   //DRAFT TOOLS
+
+
+//position filter doesn't work
 this.draftRankings = () => {
   console.log(this.createFormDR);
   $http({
     method:'GET',
     url:'/footballs',
     data: {position: this.createFormDR,
-    ppr: this.createFormDRCheck}
+    PPR: this.createFormDRCheck}
   }).then(response => {
     this.formDR.unshift(response.data)
-    this.createFormDR = {}
     console.log(response);
+    this.callDraftRankings()
   }).catch(err => {
     console.log(err);
   })
 }
 
+this.callDraftRankings = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/draftRankings/'+ this.createFormDRCheck
+  }).then(response => {
+    this.draftRankingsCalls = response.data
 
+    console.log(this.draftRankingsCalls);
+  }).catch(err => {
+    console.log(err);
+  })
+}
 
+//position works
 this.draftProjections = () => {
   console.log(this.createFormDP);
   $http({
     method:'GET',
     url:'/footballs',
     data: {position: this.createFormDP,
-    ppr: this.createFormDPCheck}
+    PPR: this.createFormDPCheck}
   }).then(response => {
     this.formDP.unshift(response.data)
-    this.createFormDP = {}
     console.log(response);
+    this.draftProjectionsCall()
   }).catch(err => {
     console.log(err);
   })
 }
 
+this.draftProjectionsCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/draftProjections/'+ this.createFormDP
+  }).then(response => {
+    this.draftProjectionsCalls = response.data
 
+    console.log(this.draftProjectionsCalls);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+// not filtering based on position entered... hmm lol
 this.draftIDP = () => {
   console.log(this.createFormIDPDraft);
   $http({
@@ -83,15 +119,32 @@ this.draftIDP = () => {
     ppr: this.createFormIDPDraftCheck}
   }).then(response => {
     this.formIDPDraft.unshift(response.data)
-    this.createFormIDPDraft = {}
+
     console.log(response);
+    this.draftIDPCall()
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+this.draftIDPCall = () => {
+
+  $http({
+    method:'GET',
+    url:'/footballs/draftIDP/'
+  }).then(response => {
+
+    this.idpCallDrafts = response.data
+
+    console.log(this.idpCallDrafts);
+
   }).catch(err => {
     console.log(err);
   })
 }
 
 ///SEASON TOOLS
-
+//Position filter works
 this.weeklyRankings = () => {
   console.log(this.createFormWR);
   $http({
@@ -101,14 +154,26 @@ this.weeklyRankings = () => {
     ppr: this.createFormWRCheck}
   }).then(response => {
     this.formWR.unshift(response.data)
-    this.createFormWR = {}
     console.log(response);
+    this.weeklyRankingsCall()
   }).catch(err => {
     console.log(err);
   })
 }
 
+this.weeklyRankingsCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/weeklyRankings/'+ this.createFormWR
+  }).then(response => {
+    this.weeklyRankingsCalls = response.data
 
+    console.log(this.weeklyRankingsCalls);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+//no filtering call so need to filter returned object
 this.weeklyDC = () => {
   console.log(this.createFormDC);
   $http({
@@ -118,37 +183,35 @@ this.weeklyDC = () => {
     ppr: this.createFormDCCheck}
   }).then(response => {
     this.formDC.unshift(response.data)
-    this.createFormDC = {}
     console.log(response);
+    this.weeklyDCCall()
   }).catch(err => {
     console.log(err);
   })
 }
 
-///////////////// CORS ISSUE FIX IT!!!!!
+this.weeklyDCCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/depthCharts/'
+  }).then(response => {
+    this.weeklyDCCalls = response.data
+
+    console.log(this.weeklyDCCalls);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+//doesn't have filters added so we can filter object returned
 this.weeklyInjuries = () => {
   console.log(this.createFormInjuries);
   $http({
     method:'GET',
     url:'/footballs/injuries'
   }).then(response => {
-    returnedQuery = response.data
-    console.log(returnedQuery);
-    console.log(response.data);
-  }).catch(err => {
-    console.log(err);
-  })
-}
+    this.weeklyInjuriesCalls = response.data
+    console.log(this.weeklyInjuriesCalls);
 
-this.draftIDPCall = () => {
-  $http({
-    method:'GET',
-    url:'/footballs/draftIDP'
-  }).then(response => {
-    returnedIDPCall = {};
-    returnedIDPCall = response.data
-    console.log(returnedIDPCall);
-    console.log(response.data);
   }).catch(err => {
     console.log(err);
   })
@@ -156,6 +219,8 @@ this.draftIDPCall = () => {
 
 
 
+
+//postion works
 this.weeklyWP = () => {
   console.log(this.createFormWP);
   $http({
@@ -165,13 +230,27 @@ this.weeklyWP = () => {
     ppr: this.createFormWPCheck}
   }).then(response => {
     this.formWP.unshift(response.data)
-    this.createFormWP = {}
     console.log(response);
+    this.weeklyWPCall()
   }).catch(err => {
     console.log(err);
   })
 }
 
+this.weeklyWPCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/weeklyProjections/' + this.createFormWP
+  }).then(response => {
+    this.weeklyWPCalls = response.data
+
+    console.log(this.weeklyWPCalls);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+//position filter doesn't work
 this.weeklyIDP = () => {
   console.log(this.createFormIDP);
   $http({
@@ -181,14 +260,25 @@ this.weeklyIDP = () => {
     ppr: this.createFormIDPCheck}
   }).then(response => {
     this.formIDP.unshift(response.data)
-    this.createFormIDP = {}
     console.log(response);
+    this.weeklyIDPCall()
   }).catch(err => {
     console.log(err);
   })
 }
 
-
+this.weeklyIDPCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/weeklyIDP/' + this.createFormIDP
+  }).then(response => {
+    this.weeklyIDPCalls = response.data
+  
+    console.log(this.weeklyIDPCalls);
+  }).catch(err => {
+    console.log(err);
+  })
+}
 
   // createHoliday method
   // this.createBlog = () => {
