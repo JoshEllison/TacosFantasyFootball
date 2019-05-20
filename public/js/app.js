@@ -605,7 +605,7 @@ const controller = this;
   this.goApp = function(){
     $http({
         method:'GET',
-        url: '/'
+        url: '/footballs'
     }).then(function(response){
         controller.loggedInUsername = response.data.username;
         console.log(response);
