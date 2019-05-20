@@ -53,9 +53,9 @@ router.get('/draftIDP/', (req, res) => {
   })
 })
 
-router.get('/draftRankings/:PPR', (req, res) => {
+router.get('/draftRankings/:position', (req, res) => {
   console.log(req.params);
-  request('https://www.fantasyfootballnerd.com/service/draft-rankings/json/iqiam5yq7fm7/' + req.params.PPR + '/' , (error, response, body) => {
+  request('https://www.fantasyfootballnerd.com/service/draft-rankings/json/iqiam5yq7fm7/' + req.params.position + '/' , (error, response, body) => {
     console.log('error:', error);
     res.json(response)
   })
