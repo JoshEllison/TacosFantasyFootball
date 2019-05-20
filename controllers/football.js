@@ -21,43 +21,49 @@ router.get('/depthCharts', (req, res) => {
   })
 })
 
-router.get('/weeklyRankings', (req, res) => {
-  request('https://www.fantasyfootballnerd.com/service/weekly-rankings/json/iqiam5yq7fm7/', (error, response, body) => {
+router.get('/weeklyRankings/:position', (req, res) => {
+  console.log(req.params);
+  request('https://www.fantasyfootballnerd.com/service/weekly-rankings/json/iqiam5yq7fm7/' + req.params.position + '/', (error, response, body) => {
     console.log('error:', error);
     res.json(response)
   })
 })
 
-router.get('/weeklyIDP', (req, res) => {
-  request('https://www.fantasyfootballnerd.com/service/weekly-idp/json/iqiam5yq7fm7/', (error, response, body) => {
+router.get('/weeklyIDP/:position', (req, res) => {
+  console.log(req.params);
+  request('https://www.fantasyfootballnerd.com/service/weekly-idp/json/iqiam5yq7fm7/' + req.params.position + '/', (error, response, body) => {
     console.log('error:', error);
     res.json(response)
   })
 })
 
-router.get('/weeklyProjections', (req, res) => {
-  request('https://www.fantasyfootballnerd.com/service/weekly-projections/json/iqiam5yq7fm7/', (error, response, body) => {
+router.get('/weeklyProjections/:position', (req, res) => {
+  console.log(req.params);
+  request('https://www.fantasyfootballnerd.com/service/weekly-projections/json/iqiam5yq7fm7/' + req.params.position + '/', (error, response, body) => {
     console.log('error:', error);
     res.json(response)
   })
 })
 
-router.get('/draftIDP', (req, res) => {
+router.get('/draftIDP/', (req, res) => {
+  console.log(req.params);
   request('https://www.fantasyfootballnerd.com/service/draft-idp/json/iqiam5yq7fm7/', (error, response, body) => {
     console.log('error:', error);
     res.json(response)
   })
 })
 
-router.get('/draftRankings', (req, res) => {
-  request('https://www.fantasyfootballnerd.com/service/draft-rankings/json/iqiam5yq7fm7/', (error, response, body) => {
+router.get('/draftRankings/:PPR', (req, res) => {
+  console.log(req.params);
+  request('https://www.fantasyfootballnerd.com/service/draft-rankings/json/iqiam5yq7fm7/' + req.params.PPR + '/' , (error, response, body) => {
     console.log('error:', error);
     res.json(response)
   })
 })
 
-router.get('/draftProjections', (req, res) => {
-  request('https://www.fantasyfootballnerd.com/service/draft-projections/json/iqiam5yq7fm7/', (error, response, body) => {
+router.get('/draftProjections/:position', (req, res) => {
+  console.log(req.params);
+  request('https://www.fantasyfootballnerd.com/service/draft-projections/json/iqiam5yq7fm7/' + req.params.position + '/', (error, response, body) => {
     console.log('error:', error);
     res.json(response)
   })
