@@ -78,7 +78,7 @@ this.callDraftRankings = () => {
     url:'/footballs/draftRankings/'+ this.createFormDR
   }).then(response => {
     let parseDataDR = JSON.parse(response.data.body)
-    console.log(parseData);
+    console.log(parseDataDR);
     this.drData = parseDataDR.DraftRankings
     console.log(this.drData);
 
