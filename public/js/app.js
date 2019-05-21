@@ -3,7 +3,7 @@
 // const apiKey = iqiam5yq7fm7
 const app = angular.module('FootballsApp', []);
 // create our app controller
-app.controller('MainController', [ '$http', function($http) {
+app.controller('MainController', [ '$http', '$scope', function($http, $scope) {
 const controller = this;
 //
 //https://www.fantasyfootballnerd.com/service/weekly-rankings/json/apiKey/QB/2/1/
@@ -451,6 +451,22 @@ this.createPlayer = function(){
           }
       );
   }
+// ___________________MODAL LOGIN___________________
+
+
+  this.openLogin = () => {
+     this.showLogin = true;
+     // console.log($scope);
+     $scope.ctrl.showLogin = true;
+   }
+// __________CLOSE MODAL_________________
+   this.closeLogin = () => {
+      this.showLogin = false;
+      $scope.ctrl.showLogin = false;
+    }
+
+
+
 
 
   this.getPlayers();
@@ -686,9 +702,11 @@ const controller = this;
     });
 }
 
-
+this.test = "hello"
+console.log('running');
 
 this.createUser = () => {
+  console.log("create user is running");
   $http({
           method:'POST',
           url: '/users',

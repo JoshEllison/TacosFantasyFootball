@@ -24,25 +24,78 @@ weekly projections position filter same weekly filter options
 idp draft rankings filter by position S LB DE CB DT
 draft rankings
 draft projections fantasy points -->
-
-<!-- add our angular controller -->
-<body ng-controller='MainController as ctrl'>
-   <!-- <div ng-view></div> -->
-  <div class="flex">
-  <div class="container">
-    <h1>Taco's Fantasy Football</h1>
-
-
-
-
 <header>
-  <h1> Draft Tools </h1>
-  <nav>
-    <a ng-if="!ctrl.user.logged " ng-click="ctrl.openLogin()" class="menuItem menuLink headerLink ng-scope" href="#">Login</a>
-    </nav>
-    </header>
-    <div class="draftContainer">
-      <h5>Draft Rankings</h5>
+  Taco's Fantasy Football
+    <!-- <nav> -->
+    <!--  <div ng-controller="AuthController as auth"
+   <h2>Create User</h2>
+       <form ng-submit="auth.createUser()">
+           <input type="text" ng-model="auth.createUsername"/>
+           <input type="password" ng-model="auth.createPassword" />
+           <input type="submit" value="Create User" />
+       </form>
+       <h2>Log In</h2>
+       <form ng-submit="auth.logIn()">
+         <input type="text" ng-model="auth.loginUsername" />
+         <input type="password" ng-model="auth.loginPassword" />
+         <input type="submit" value="Log In">
+       </form>
+       <form ng-submit="auth.logOut()">
+         <input type="submit" value=" Logout">
+       </form>
+       <h2>Go to "the app"</h2>
+       <a href="#" ng-click="auth.goApp()">Click here</a>
+       <div ng-if="auth.logggedInUsername">
+          Welcome, {{ auth.logggedInUsername }}
+        </div> -->
+      <!-- <a ng-if="!ctrl.user.logged " ng-click="ctrl.openLogin()" class="menuItem menuLink headerLink ng-scope" href="#">Login</a> -->
+      <!-- add our angular controller -->
+<body ng-controller='MainController as ctrl'>
+    <!-- </nav> -->
+    <!-- switch class of show and hide -->
+      <div class="modal" ng-class="(ctrl.showLogin ? 'edit' : '')">
+        <div class="modal-form">
+          <div class="row">
+            <div class="title-tag-row">
+              <button ng-click="ctrl.closeLogin()">X</button>
+               <div ng-controller="AuthController as auth">
+                 <h2>Create User</h2>
+                 <form ng-submit="auth.createUser()">
+                     <input type="text" ng-model="auth.createUsername"/>
+                     <input type="password" ng-model="auth.createPassword" />
+                     <input type="submit" value="Create User" />
+                 </form>
+                 <h2>Log In</h2>
+                 <form ng-submit="auth.logIn()">
+                   <input type="text" ng-model="auth.loginUsername" />
+                   <input type="password" ng-model="auth.loginPassword" />
+                   <input type="submit" value="Log In">
+                 </form>
+                 <form ng-submit="auth.logOut()">
+                   <input type="submit" value=" Logout">
+                 </form>
+                 <h2>Go to "the app"</h2>
+                 <a href="#" ng-click="auth.goApp()">Click here</a>
+                 <div ng-if="auth.logggedInUsername">
+                    Welcome, {{ auth.logggedInUsername }}
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+
+   <!-- <div ng-view></div> -->
+       <a ng-if="!ctrl.user.logged " ng-click="ctrl.openLogin()" class="menuItem menuLink headerLink ng-scope" href="#">Login</a>
+
+
+  <div class="flex">
+    <div class="container">
+      <h1> Draft Tools </h1>
+
+      <div class="draftContainer">
+        <h5>Draft Rankings</h5>
         <form ng-submit="ctrl.draftRankings()">
           <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
           <input type="checkbox" ng-model="ctrl.createFormDRCheck" placeholder="check for PPR"/>
@@ -68,15 +121,6 @@ draft projections fantasy points -->
 
           </div>
         </div>
-
-        <!-- <table>
-       <tr ng-repeat="displayName in ctrl.drDatas">
-        <td>Name: {{ ctrl.drDatas.displayName }} </td>
-
-       </tr>
-     <table> -->
-
-
       <h5>Draft Projections</h5>
         <form ng-submit="ctrl.draftProjections()">
           <input type="text" ng-model="ctrl.createFormDP" placeholder="Position"/>
@@ -84,8 +128,8 @@ draft projections fantasy points -->
           <input type="submit" value="Search Rankings" />
         </form>
 
-        <div class="showBoard">
-          <div ng-repeat="data in ctrl.dpData" class="players">
+      <div class="showBoard">
+        <div ng-repeat="data in ctrl.dpData" class="players">
 
             <p>Name: {{data.displayName}}</p>
             <p>Team:  {{data.team}}</p>
@@ -103,15 +147,12 @@ draft projections fantasy points -->
 
           </div>
         </div>
-
       <h5>Draft IDP Rankings</h5>
-
       <form ng-submit="ctrl.draftIDP()">
         <input type="text" ng-model="ctrl.createFormIDPDraft" placeholder="Position"/>
         <input type="checkbox" ng-model="ctrl.createFormIDPDraftCheck" placeholder="check for PPR"/>
         <input type="submit" value="Search Rankings" />
       </form>
-
       <div class="showBoard">
         <div ng-repeat="data in ctrl.idpData" class="players">
 
@@ -132,8 +173,9 @@ draft projections fantasy points -->
         </div>
       </div>
 
-    </div>  <!-- END DRAFT CONTAINER -->
-
+    </div>
+    <!-- ________END DRAFT CONTAINER___________ -->
+    <!-- _______START SEASON CONTAINER_________ -->
     <div class="seasonContainer">
       <h2> Season Tools </h2>
       <h5>Weekly Rankings</h5>
@@ -143,8 +185,8 @@ draft projections fantasy points -->
           <input type="submit" value="Search Rankings" />
         </form>
 
-        <div class="showBoard">
-          <div ng-repeat="data in ctrl.wrData" class="players">
+      <div class="showBoard">
+        <div ng-repeat="data in ctrl.wrData" class="players">
 
             <p>Name: {{data.displayName}}</p>
             <p>Team:  {{data.team}}</p>
@@ -160,8 +202,8 @@ draft projections fantasy points -->
             <p>Rush Yards: {{data.rushYards}}</p>
             <p>Rush TD's: {{data.rushTD}}</p>
 
-          </div>
         </div>
+      </div>
 
       <h5>Depth Chart</h5>
         <form ng-submit="ctrl.weeklyDC()">
@@ -169,8 +211,8 @@ draft projections fantasy points -->
           <input type="checkbox" ng-model="ctrl.createFormDCCheck" placeholder="check for PPR"/>
           <input type="submit" value="Search Rankings" />
         </form>
-        <div class="showBoard">
-          <div ng-repeat="data in ctrl.dcData" class="players">
+      <div class="showBoard">
+        <div ng-repeat="data in ctrl.dcData" class="players">
 
             <p>Name: {{data.displayName}}</p>
             <p>Team:  {{data.team}}</p>
@@ -186,8 +228,8 @@ draft projections fantasy points -->
             <p>Rush Yards: {{data.rushYards}}</p>
             <p>Rush TD's: {{data.rushTD}}</p>
 
-          </div>
         </div>
+      </div>
 
       <h5>Injuries</h5>
       <button ng-click="ctrl.weeklyInjuries()">Injuries</button><br>
@@ -210,8 +252,6 @@ draft projections fantasy points -->
 
         </div>
       </div>
-
-
       <h5>Weekly Projections</h5>
         <form ng-submit="ctrl.weeklyWP()">
           <input type="text" ng-model="ctrl.createFormWP" placeholder="Position"/>
@@ -219,8 +259,8 @@ draft projections fantasy points -->
           <input type="submit" value="Search Rankings" />
         </form>
 
-        <div class="showBoard">
-          <div ng-repeat="data in ctrl.wpData" class="players">
+      <div class="showBoard">
+        <div ng-repeat="data in ctrl.wpData" class="players">
 
             <p>Name: {{data.displayName}}</p>
             <p>Team:  {{data.team}}</p>
@@ -236,15 +276,15 @@ draft projections fantasy points -->
             <p>Rush Yards: {{data.rushYards}}</p>
             <p>Rush TD's: {{data.rushTD}}</p>
 
-          </div>
         </div>
+      </div>
 
       <h5>IDP Weekly Projections</h5>
-      <form ng-submit="ctrl.weeklyIDP()">
-        <input type="text" ng-model="ctrl.createFormIDP" placeholder="Position"/>
-        <input type="checkbox" ng-model="ctrl.createFormIDPCheck" placeholder="check for PPR"/>
-        <input type="submit" value="Search Rankings" />
-      </form>
+        <form ng-submit="ctrl.weeklyIDP()">
+          <input type="text" ng-model="ctrl.createFormIDP" placeholder="Position"/>
+          <input type="checkbox" ng-model="ctrl.createFormIDPCheck" placeholder="check for PPR"/>
+          <input type="submit" value="Search Rankings" />
+        </form>
 
       <div class="showBoard">
         <div ng-repeat="data in ctrl.wIDPData" class="players">
@@ -265,67 +305,46 @@ draft projections fantasy points -->
 
         </div>
       </div>
-
-      <!-- <div class="showBoard">
-        <div ng-repeat="data in ctrl.drData" class="players">
-
-          <p>Name: {{data.displayName}}</p>
-          <p>Team:  {{data.team}}</p>
-          <p>Position: {{data.position}}</p>
-          <p>Rank: {{data.overallRank}}</p>
-          <p>Bye Week: {{data.byeWeek}}</p>
-          <p>Fantasy Points: {{data.fantasyPoints}}</p>
-          <p>Completions: {{data.completions}}</p>
-          <p>Attempts: {{data.attempts}}</p>
-          <p>Passing TD's: {{data.passingTD}}</p>
-          <p>Passing Yards: {{data.passingYards}}</p>
-          <p>Passing INT's: {{data.passingInt}}</p>
-          <p>Rush Yards: {{data.rushYards}}</p>
-          <p>Rush TD's: {{data.rushTD}}</p>
-
-        </div>
-      </div> -->
-
     </div>
-<div class ="container">
-  <h2> Draft Board </h2>
-  <form ng-submit="ctrl.createPlayer()"class="">
-    <input ng-model="ctrl.displayName" type="text" placeholder="Full Name">
+  </div>
+
+<!-- ______________ DRAFT BOARD_________________  -->
+  <div class ="container">
+    <h1> Draft Board </h1>
+    <form ng-submit="ctrl.createPlayer()"class="">
+      <input ng-model="ctrl.displayName" type="text" placeholder="Full Name">
       <input ng-model="ctrl.team" type="text" placeholder="Team Name">
-        <input ng-model="ctrl.position" type="text" placeholder="Position">
-          <input ng-model="ctrl.rank" type="number" placeholder="Rank">
-            <input ng-model="ctrl.byeWeek" type="number"  placeholder="Bye Week">
-            <input type="submit" value="Add New Player">
-  </form>
-<div ng-repeat="player in ctrl.players">
-  <p> {{ player.displayName }}</p>
-  <p> {{ player.team }}</p>
-  <p> {{ player.position }}</p>
-  <p> {{ player.rank }} </p>
-  <p> {{ player.byeWeek }} </p>
-<button ng-click="ctrl.deletePlayer(player)">X</button>
-<form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editPlayer(player)">
-      <input type="text" ng-model="ctrl.updatedDisplayName" placeholder="Player Name">
-      <input type="text" ng-model="ctrl.updatedTeam" placeholder="Team Name">
-      <input type="text" ng-model="ctrl.updatedPosition" placeholder="Position">
-      <input type="text" ng-model="ctrl.updatedRank" placeholder="Rank">
-      <input type="text" ng-model="ctrl.updatedByeWeek" placeholder="Bye Week">
-      <input type="submit" value="Update!">
-  </form>
-  <a href="#" ng-click="ctrl.indexOfEditFormToShow = $index">Update!</a>
-</div>
-
-
+      <input ng-model="ctrl.position" type="text" placeholder="Position">
+      <input ng-model="ctrl.rank" type="number" placeholder="Rank">
+      <input ng-model="ctrl.byeWeek" type="number"  placeholder="Bye Week">
+      <input type="submit" value="Add New Player">
+    </form>
+    <div ng-repeat="player in ctrl.players">
+      <p> {{ player.displayName }}</p>
+      <p> {{ player.team }}</p>
+      <p> {{ player.position }}</p>
+      <p> {{ player.rank }} </p>
+      <p> {{ player.byeWeek }} </p>
+      <button ng-click="ctrl.deletePlayer(player)">X</button>
+      <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editPlayer(player)">
+        <input type="text" ng-model="ctrl.updatedDisplayName" placeholder="Player Name">
+        <input type="text" ng-model="ctrl.updatedTeam" placeholder="Team Name">
+        <input type="text" ng-model="ctrl.updatedPosition" placeholder="Position">
+        <input type="text" ng-model="ctrl.updatedRank" placeholder="Rank">
+        <input type="text" ng-model="ctrl.updatedByeWeek" placeholder="Bye Week">
+        <input type="submit" value="Update!">
+      </form>
+        <a href="#" ng-click="ctrl.indexOfEditFormToShow = $index">Update!</a>
+    </div>
   </div>
 
 
 
 
-
-        <!-- <div ng-controller="AuthController as auth"
+         <!-- <div ng-controller="AuthController as auth"
         <h2>Create User</h2>
             <form ng-submit="auth.createUser()">
-                <input type="text" ng-model="auth.createUsername" />
+                <input type="text" ng-model="auth.createUsername"/>
                 <input type="password" ng-model="auth.createPassword" />
                 <input type="submit" value="Create User" />
             </form>
@@ -338,16 +357,14 @@ draft projections fantasy points -->
             <form ng-submit="auth.logOut()">
               <input type="submit" value=" Logout">
             </form>
-            <!-- <h2>Go to "the app"</h2>
+            <h2>Go to "the app"</h2>
             <a href="#" ng-click="auth.goApp()">Click here</a>
-            <!-- <div ng-if="auth.logggedInUsername"> -->
-               <!-- Welcome, {{ auth.logggedInUsername }} -->
-            <!-- </div> -->
+            <div ng-if="auth.logggedInUsername">
+               Welcome, {{ auth.logggedInUsername }}
+             </div> -->
 
-</div>
-</div>
+  </div>
 </body>
-
 </html>
 
 
@@ -402,15 +419,3 @@ draft projections fantasy points -->
       </div>
     </div>
   </div>
-
-  <div class="modal" ng-class="(ctrl.editBlog.modal ? 'edit' : '')">
-    <form class="modal-form">
-      <div class="row">
-        <div class="title-tag-row">
-          <label>Title
-            <input type="text" ng-model="ctrl.editBlog.blog.title" id="title">
-          </label>
-          <label for="tags">Tags
-            <input type="text" ng-model="ctrl.editBlog.blog.tags" id="tags">
-          </label>
-        </div> -->
