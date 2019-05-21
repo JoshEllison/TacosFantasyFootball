@@ -8,7 +8,7 @@
   <!--import Angular  -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js" charset="utf-8"></script>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.min.js" charset="utf-8"></script> -->
-
+<link href="https://fonts.googleapis.com/css?family=Bitter&display=swap" rel="stylesheet">
   <!-- import our app.js file -->
   <script src="js/app.js" charset="utf-8"></script>
   <link rel="stylesheet" href="css/normalize.css">
@@ -16,8 +16,7 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 
-<header>
-  Taco's Fantasy Football
+
     <!-- <nav> -->
     <!--  <div ng-controller="AuthController as auth"
    <h2>Create User</h2>
@@ -66,21 +65,23 @@
                  <form ng-submit="auth.logOut()">
                    <input type="submit" value=" Logout">
                  </form>
-                 <h2>Go to "the app"</h2>
+                 <!-- <h2>Go to "the app"</h2>
                  <a href="#" ng-click="auth.goApp()">Click here</a>
                  <div ng-if="auth.logggedInUsername">
                     Welcome, {{ auth.logggedInUsername }}
-                  </div>
+                  </div> -->
             </div>
           </div>
         </div>
       </div>
     </div>
-</header>
 
    <!-- <div ng-view></div> -->
+   <header>
+     <h1> <img src= "LogoMakr_2NPYz5.png">Taco's Fantasy Football<img src= "LogoMakr_2NPYz5.png"> </h1>
        <a ng-if="!ctrl.user.logged " ng-click="ctrl.openLogin()" class="menuItem menuLink headerLink ng-scope" href="#">Login</a>
 
+     </header>
 
   <div class="flex">
     <div class="container">
@@ -91,10 +92,10 @@
         <form ng-submit="ctrl.draftRankings()">
           <!-- <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
           <input type="checkbox" ng-model="ctrl.createFormDRCheck" placeholder="check for PPR"/> -->
-          <input type="submit" value="Search Rankings" />
+          <input ng-click="showDetails = ! showDetails"  type="submit" value="Search Rankings" />
         </form>
 
-        <div class="showBoard">
+        <div class="showBoard" ng-class="{ 'hidden': ! showDetails }">
 
           <div class="table">
 
@@ -126,10 +127,10 @@
         <form ng-submit="ctrl.draftProjections()">
           <input type="text" ng-model="ctrl.createFormDP" placeholder="Position"/>
           <!-- <input type="checkbox" ng-model="ctrl.createFormDPCheck" placeholder="check for PPR"/> -->
-          <input type="submit" value="Search Rankings" />
+          <input  ng-click="showDetails = ! showDetails" type="submit" value="Search Rankings" />
         </form>
 
-      <div class="showBoard">
+      <div class="showBoard" ng-class="{ 'hidden': ! showDetails }">
 
         <div class="table">
 
@@ -162,9 +163,9 @@
       <form ng-submit="ctrl.draftIDPCall()">
         <!-- <input type="text" ng-model="ctrl.createFormIDPDraft" placeholder="Position"/>
         <input type="checkbox" ng-model="ctrl.createFormIDPDraftCheck" placeholder="check for PPR"/> -->
-        <input type="submit" value="Search Rankings" />
+        <input ng-click="showDetails = ! showDetails" type="submit" value="Search Rankings" />
       </form>
-      <div class="showBoard">
+      <div class="showBoard" ng-class="{ 'hidden': ! showDetails }">
 
         <div class="table">
 
@@ -207,10 +208,10 @@
         <form ng-submit="ctrl.weeklyRankings()">
           <input type="text" ng-model="ctrl.createFormWR" placeholder="Position"/>
           <!-- <input type="checkbox" ng-model="ctrl.createFormWRCheck" placeholder="check for PPR"/> -->
-          <input type="submit" value="Search Rankings" />
+          <input ng-click="showDetails = ! showDetails" type="submit" value="Search Rankings" />
         </form>
 
-      <div class="showBoard">
+      <div class="showBoard" ng-class="{ 'hidden': ! showDetails }">
 
         <div class="table">
 
@@ -242,9 +243,9 @@
         <form ng-submit="ctrl.weeklyDCCall()">
           <!-- <input type="text" ng-model="ctrl.createFormDC" placeholder="Position"/> -->
           <!-- <input type="checkbox" ng-model="ctrl.createFormDCCheck" placeholder="check for PPR"/> -->
-          <input type="submit" value="Search Rankings" />
+          <input ng-click="showDetails = ! showDetails" type="submit" value="Search Rankings" />
         </form>
-      <div class="showBoard">
+      <div class="showBoard" ng-class="{ 'hidden': ! showDetails }">
         <div class="table">
 
           <table>
@@ -273,8 +274,8 @@
       </div>
 
       <h5>Injuries</h5>
-      <button ng-click="ctrl.weeklyInjuries()">Search Injuries</button><br>
-      <div class="showBoard">
+      <button ng-click="ctrl.weeklyInjuries()" ng-click="showDetails = ! showDetails">Search Injuries</button><br>
+      <div class="showBoard" ng-class="{ 'hidden': ! showDetails }">
 
         <div class="table">
 
@@ -306,10 +307,10 @@
         <form ng-submit="ctrl.weeklyWP()">
           <input type="text" ng-model="ctrl.createFormWP" placeholder="Position"/>
           <!-- <input type="checkbox" ng-model="ctrl.createFormWPCheck" placeholder="check for PPR"/> -->
-          <input type="submit" value="Search Rankings" />
+          <input ng-click="showDetails = ! showDetails" type="submit" value="Search Rankings" />
         </form>
 
-      <div class="showBoard">
+      <div class="showBoard"  ng-class="{ 'hidden': ! showDetails }" >
         <div class="table">
 
           <table>
@@ -341,10 +342,10 @@
         <form ng-submit="ctrl.weeklyIDPCall()">
           <!-- <input type="text" ng-model="ctrl.createFormIDP" placeholder="Position"/> -->
           <!-- <input type="checkbox" ng-model="ctrl.createFormIDPCheck" placeholder="check for PPR"/> -->
-          <input type="submit" value="Search Rankings" />
+          <input ng-click="showDetails = ! showDetails" type="submit" value="Search Rankings" />
         </form>
 
-      <div class="showBoard">
+      <div class="showBoard" ng-class="{ 'hidden': ! showDetails }">
         <div class="table">
 
           <table>
@@ -372,7 +373,7 @@
       </div>
     </div>
   </div>
-
+</div>
 <!-- ______________ DRAFT BOARD_________________  -->
   <div class ="container">
     <h1> Draft Board </h1>
@@ -402,7 +403,7 @@
         <a href="#" ng-click="ctrl.indexOfEditFormToShow = $index">Update!</a>
     </div>
   </div>
-
+</div>
 
 
 
@@ -427,8 +428,11 @@
             <div ng-if="auth.logggedInUsername">
                Welcome, {{ auth.logggedInUsername }}
              </div> -->
-
-  </div>
+<footer>
+  <span><img src= "LogoMakr_2NPYz5.png">The Fantasy Football Guru's of Web Developement<img src= "LogoMakr_2NPYz5.png"> </span>
+  <hr />
+  <span><img src= "LogoMakr_2NPYz5.png">Aaron-aka-"A-Aron" Thad-aka-"Odins Beard" Josh-aka-"Wildcard"<img src= "LogoMakr_2NPYz5.png"></span>
+  </footer>
 </body>
 </html>
 
@@ -483,4 +487,4 @@
         <button ng-click="ctrl.editBlogModal(blog)" class="melon-button">Edit</button>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
