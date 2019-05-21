@@ -15,15 +15,7 @@
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<!-- create button for specific query ex draft rankings add check for filter ppr or non ppr. On click have modal pop up for query positions with drop down for all or single position in a form. have form on submit call function to query new call.    -->
-<!-- weekly rankings required week position and ppr 1 for yes ppr (check box) . results in array. so set variable to empty array to store results.data
-depth chart filter by team. Do 2 positions for everything but WR (3)
-injuries leave empty for current week or drop down for previous weeks.
-idp weekly same format
-weekly projections position filter same weekly filter options
-idp draft rankings filter by position S LB DE CB DT
-draft rankings
-draft projections fantasy points -->
+
 <header>
   Taco's Fantasy Football
     <!-- <nav> -->
@@ -97,8 +89,8 @@ draft projections fantasy points -->
       <div class="draftContainer">
         <h5>Draft Rankings</h5>
         <form ng-submit="ctrl.draftRankings()">
-          <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormDRCheck" placeholder="check for PPR"/>
+          <!-- <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
+          <input type="checkbox" ng-model="ctrl.createFormDRCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
 
@@ -124,7 +116,7 @@ draft projections fantasy points -->
       <h5>Draft Projections</h5>
         <form ng-submit="ctrl.draftProjections()">
           <input type="text" ng-model="ctrl.createFormDP" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormDPCheck" placeholder="check for PPR"/>
+          <!-- <input type="checkbox" ng-model="ctrl.createFormDPCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
 
@@ -148,9 +140,9 @@ draft projections fantasy points -->
           </div>
         </div>
       <h5>Draft IDP Rankings</h5>
-      <form ng-submit="ctrl.draftIDP()">
-        <input type="text" ng-model="ctrl.createFormIDPDraft" placeholder="Position"/>
-        <input type="checkbox" ng-model="ctrl.createFormIDPDraftCheck" placeholder="check for PPR"/>
+      <form ng-submit="ctrl.draftIDPCall()">
+        <!-- <input type="text" ng-model="ctrl.createFormIDPDraft" placeholder="Position"/>
+        <input type="checkbox" ng-model="ctrl.createFormIDPDraftCheck" placeholder="check for PPR"/> -->
         <input type="submit" value="Search Rankings" />
       </form>
       <div class="showBoard">
@@ -181,7 +173,7 @@ draft projections fantasy points -->
       <h5>Weekly Rankings</h5>
         <form ng-submit="ctrl.weeklyRankings()">
           <input type="text" ng-model="ctrl.createFormWR" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormWRCheck" placeholder="check for PPR"/>
+          <!-- <input type="checkbox" ng-model="ctrl.createFormWRCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
 
@@ -206,9 +198,9 @@ draft projections fantasy points -->
       </div>
 
       <h5>Depth Chart</h5>
-        <form ng-submit="ctrl.weeklyDC()">
-          <input type="text" ng-model="ctrl.createFormDC" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormDCCheck" placeholder="check for PPR"/>
+        <form ng-submit="ctrl.weeklyDCCall()">
+          <!-- <input type="text" ng-model="ctrl.createFormDC" placeholder="Position"/> -->
+          <!-- <input type="checkbox" ng-model="ctrl.createFormDCCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
       <div class="showBoard">
@@ -232,7 +224,7 @@ draft projections fantasy points -->
       </div>
 
       <h5>Injuries</h5>
-      <button ng-click="ctrl.weeklyInjuries()">Injuries</button><br>
+      <button ng-click="ctrl.weeklyInjuries()">Search Injuries</button><br>
       <div class="showBoard">
         <div ng-repeat="data in ctrl.iData" class="players">
 
@@ -255,7 +247,7 @@ draft projections fantasy points -->
       <h5>Weekly Projections</h5>
         <form ng-submit="ctrl.weeklyWP()">
           <input type="text" ng-model="ctrl.createFormWP" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormWPCheck" placeholder="check for PPR"/>
+          <!-- <input type="checkbox" ng-model="ctrl.createFormWPCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
 
@@ -280,9 +272,9 @@ draft projections fantasy points -->
       </div>
 
       <h5>IDP Weekly Projections</h5>
-        <form ng-submit="ctrl.weeklyIDP()">
-          <input type="text" ng-model="ctrl.createFormIDP" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormIDPCheck" placeholder="check for PPR"/>
+        <form ng-submit="ctrl.weeklyIDPCall()">
+          <!-- <input type="text" ng-model="ctrl.createFormIDP" placeholder="Position"/> -->
+          <!-- <input type="checkbox" ng-model="ctrl.createFormIDPCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
 
