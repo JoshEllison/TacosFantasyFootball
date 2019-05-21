@@ -62,8 +62,8 @@ this.draftRankings = () => {
   $http({
     method:'GET',
     url:'/footballs',
-    data: {position: this.createFormDR,
-    PPR: this.createFormDRCheck}
+    data: {position: this.createFormDR},
+    // PPR: this.createFormDRCheck}
   }).then(response => {
     this.formDR.unshift(response.data)
     console.log(response);
@@ -76,7 +76,7 @@ this.draftRankings = () => {
 this.callDraftRankings = () => {
   $http({
     method:'GET',
-    url:'/footballs/draftRankings/'+ this.createFormDR
+    url:'/footballs/draftRankings/' //this.createFormDR
   }).then(response => {
     let parseDataDR = JSON.parse(response.data.body)
     console.log(parseDataDR);
@@ -95,8 +95,8 @@ this.draftProjections = () => {
   $http({
     method:'GET',
     url:'/footballs',
-    data: {position: this.createFormDP,
-    PPR: this.createFormDPCheck}
+    data: {position: this.createFormDP},
+    // PPR: this.createFormDPCheck}
   }).then(response => {
     this.formDP.unshift(response.data)
     console.log(response);
@@ -124,8 +124,9 @@ this.draftIDP = () => {
   $http({
     method:'GET',
     url:'/footballs',
-    data: {position: this.createFormIDPDraft,
-    ppr: this.createFormIDPDraftCheck}
+    data: {position: this.createFormIDPDraft},
+    // ppr: this.createFormIDPDraftCheck}
+
   }).then(response => {
     this.formIDPDraft.unshift(response.data)
 
@@ -144,7 +145,7 @@ this.draftIDPCall = () => {
   }).then(response => {
 
     let parseDataIDP = JSON.parse(response.data.body)
-    this.idpData = parseDataIDP.week
+    this.idpData = parseDataIDP.DraftIDP
     console.log(this.idpData);
 
   }).catch(err => {
@@ -159,8 +160,8 @@ this.weeklyRankings = () => {
   $http({
     method:'GET',
     url:'/footballs',
-    data: {position: this.createFormWR,
-    ppr: this.createFormWRCheck}
+    data: {position: this.createFormWR},
+
   }).then(response => {
     this.formWR.unshift(response.data)
     console.log(response);
@@ -182,22 +183,22 @@ this.weeklyRankingsCall = () => {
     console.log(err);
   })
 }
-//no filtering call so need to filter returned object
-this.weeklyDC = () => {
-  console.log(this.createFormDC);
-  $http({
-    method:'GET',
-    url:'/footballs',
-    data: {position: this.createFormDC,
-    ppr: this.createFormDCCheck}
-  }).then(response => {
-    this.formDC.unshift(response.data)
-    console.log(response);
-    this.weeklyDCCall()
-  }).catch(err => {
-    console.log(err);
-  })
-}
+// no filtering call so need to filter returned object
+// this.weeklyDC = () => {
+//   console.log(this.createFormDC);
+//   $http({
+//     method:'GET',
+//     url:'/footballs',
+//     data: {position: this.createFormDC},
+//     // ppr: this.createFormDCCheck}
+//   }).then(response => {
+//     this.formDC.unshift(response.data)
+//     console.log(response);
+//     this.weeklyDCCall()
+//   }).catch(err => {
+//     console.log(err);
+//   })
+// }
 
 this.weeklyDCCall = () => {
   $http({
@@ -236,8 +237,8 @@ this.weeklyWP = () => {
   $http({
     method:'GET',
     url:'/footballs',
-    data: {position: this.createFormWP,
-    ppr: this.createFormWPCheck}
+    data: {position: this.createFormWP},
+
   }).then(response => {
     this.formWP.unshift(response.data)
     console.log(response);
@@ -261,29 +262,30 @@ this.weeklyWPCall = () => {
 }
 
 //position filter doesn't work
-this.weeklyIDP = () => {
-  console.log(this.createFormIDP);
-  $http({
-    method:'GET',
-    url:'/footballs',
-    data: {position: this.createFormIDP,
-    ppr: this.createFormIDPCheck}
-  }).then(response => {
-    this.formIDP.unshift(response.data)
-    console.log(response);
-    this.weeklyIDPCall()
-  }).catch(err => {
-    console.log(err);
-  })
-}
+// this.weeklyIDP = () => {
+//   console.log(this.createFormIDP);
+//   $http({
+//     method:'GET',
+//     url:'/footballs',
+//     data: {position: this.createFormIDP},
+//
+//   }).then(response => {
+//     this.formIDP.unshift(response.data)
+//     console.log(response);
+//     this.weeklyIDPCall()
+//   }).catch(err => {
+//     console.log(err);
+//   })
+// }
 
 this.weeklyIDPCall = () => {
   $http({
     method:'GET',
-    url:'/footballs/weeklyIDP/' + this.createFormIDP
+    url:'/footballs/weeklyIDP/'
   }).then(response => {
     let parseDataWIDP = JSON.parse(response.data.body)
     this.wIDPData = parseDataWIDP
+
     console.log(this.wIDPData);
   }).catch(err => {
     console.log(err);

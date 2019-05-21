@@ -6,7 +6,7 @@ const footballSchema = mongoose.Schema({
   displayName: {type: String},
   week: {type: Number, minimum: 1},
   team: {type: String},
-  position: {type: String},
+  position: {type: String, required:true},
   rank: {type: Number},
   fantasyPoints: {type: String},
   overallRank: {type: String},

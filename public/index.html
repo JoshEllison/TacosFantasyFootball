@@ -15,15 +15,7 @@
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<!-- create button for specific query ex draft rankings add check for filter ppr or non ppr. On click have modal pop up for query positions with drop down for all or single position in a form. have form on submit call function to query new call.    -->
-<!-- weekly rankings required week position and ppr 1 for yes ppr (check box) . results in array. so set variable to empty array to store results.data
-depth chart filter by team. Do 2 positions for everything but WR (3)
-injuries leave empty for current week or drop down for previous weeks.
-idp weekly same format
-weekly projections position filter same weekly filter options
-idp draft rankings filter by position S LB DE CB DT
-draft rankings
-draft projections fantasy points -->
+
 <header>
   Taco's Fantasy Football
     <!-- <nav> -->
@@ -97,13 +89,22 @@ draft projections fantasy points -->
       <div class="draftContainer">
         <h5>Draft Rankings</h5>
         <form ng-submit="ctrl.draftRankings()">
-          <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormDRCheck" placeholder="check for PPR"/>
+          <!-- <input type="text" ng-model="ctrl.createFormDR" placeholder="Position"/>
+          <input type="checkbox" ng-model="ctrl.createFormDRCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
 
         <div class="showBoard">
-          <div ng-repeat="data in ctrl.drData" class="players">
+
+          <div class="table">
+
+            <table>
+              <tr ng-repeat="(key, value) in ctrl.drData">
+                <td> {{key}} </td> <td> {{ value }} </td>
+              </tr>
+            </table>
+
+          <!-- <div ng-repeat="data in ctrl.drData" class="players">
 
             <p>Name: {{data.displayName}}</p>
             <p>Team:  {{data.team}}</p>
@@ -117,19 +118,29 @@ draft projections fantasy points -->
             <p>Passing Yards: {{data.passingYards}}</p>
             <p>Passing INT's: {{data.passingInt}}</p>
             <p>Rush Yards: {{data.rushYards}}</p>
-            <p>Rush TD's: {{data.rushTD}}</p>
+            <p>Rush TD's: {{data.rushTD}}</p> -->
 
           </div>
         </div>
       <h5>Draft Projections</h5>
         <form ng-submit="ctrl.draftProjections()">
           <input type="text" ng-model="ctrl.createFormDP" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormDPCheck" placeholder="check for PPR"/>
+          <!-- <input type="checkbox" ng-model="ctrl.createFormDPCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
 
       <div class="showBoard">
-        <div ng-repeat="data in ctrl.dpData" class="players">
+
+        <div class="table">
+
+          <table>
+            <tr ng-repeat="(key, value) in ctrl.dpData">
+              <td> {{key}} </td> <td> {{ value }} </td>
+            </tr>
+          </table>
+
+
+        <!-- <div ng-repeat="data in ctrl.dpData" class="players">
 
             <p>Name: {{data.displayName}}</p>
             <p>Team:  {{data.team}}</p>
@@ -143,18 +154,32 @@ draft projections fantasy points -->
             <p>Passing Yards: {{data.passingYards}}</p>
             <p>Passing INT's: {{data.passingInt}}</p>
             <p>Rush Yards: {{data.rushYards}}</p>
-            <p>Rush TD's: {{data.rushTD}}</p>
+            <p>Rush TD's: {{data.rushTD}}</p> -->
 
           </div>
         </div>
       <h5>Draft IDP Rankings</h5>
-      <form ng-submit="ctrl.draftIDP()">
-        <input type="text" ng-model="ctrl.createFormIDPDraft" placeholder="Position"/>
-        <input type="checkbox" ng-model="ctrl.createFormIDPDraftCheck" placeholder="check for PPR"/>
+      <form ng-submit="ctrl.draftIDPCall()">
+        <!-- <input type="text" ng-model="ctrl.createFormIDPDraft" placeholder="Position"/>
+        <input type="checkbox" ng-model="ctrl.createFormIDPDraftCheck" placeholder="check for PPR"/> -->
         <input type="submit" value="Search Rankings" />
       </form>
       <div class="showBoard">
-        <div ng-repeat="data in ctrl.idpData" class="players">
+
+        <div class="table">
+
+          <table>
+            <tr ng-repeat="(key, value) in ctrl.idpData">
+              <td> {{key}} </td> <td> {{ value }} </td>
+            </tr>
+          </table>
+
+
+        <!-- ng-repeat="data in ctrl.idpData" class="players"> -->
+
+
+
+        <!-- <div ng-repeat="data in ctrl.idpData" class="players">
 
           <p>Name: {{data.displayName}}</p>
           <p>Team:  {{data.team}}</p>
@@ -170,7 +195,7 @@ draft projections fantasy points -->
           <p>Rush Yards: {{data.rushYards}}</p>
           <p>Rush TD's: {{data.rushTD}}</p>
 
-        </div>
+        </div> -->
       </div>
 
     </div>
@@ -181,12 +206,20 @@ draft projections fantasy points -->
       <h5>Weekly Rankings</h5>
         <form ng-submit="ctrl.weeklyRankings()">
           <input type="text" ng-model="ctrl.createFormWR" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormWRCheck" placeholder="check for PPR"/>
+          <!-- <input type="checkbox" ng-model="ctrl.createFormWRCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
 
       <div class="showBoard">
-        <div ng-repeat="data in ctrl.wrData" class="players">
+
+        <div class="table">
+
+          <table>
+            <tr ng-repeat="(key, value) in ctrl.wrData">
+              <td> {{key}} </td> <td> {{ value }} </td>
+            </tr>
+          </table>
+        <!-- <div ng-repeat="data in ctrl.wrData" class="players">
 
             <p>Name: {{data.displayName}}</p>
             <p>Team:  {{data.team}}</p>
@@ -200,19 +233,27 @@ draft projections fantasy points -->
             <p>Passing Yards: {{data.passingYards}}</p>
             <p>Passing INT's: {{data.passingInt}}</p>
             <p>Rush Yards: {{data.rushYards}}</p>
-            <p>Rush TD's: {{data.rushTD}}</p>
+            <p>Rush TD's: {{data.rushTD}}</p> -->
 
         </div>
       </div>
 
       <h5>Depth Chart</h5>
-        <form ng-submit="ctrl.weeklyDC()">
-          <input type="text" ng-model="ctrl.createFormDC" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormDCCheck" placeholder="check for PPR"/>
+        <form ng-submit="ctrl.weeklyDCCall()">
+          <!-- <input type="text" ng-model="ctrl.createFormDC" placeholder="Position"/> -->
+          <!-- <input type="checkbox" ng-model="ctrl.createFormDCCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
       <div class="showBoard">
-        <div ng-repeat="data in ctrl.dcData" class="players">
+        <div class="table">
+
+          <table>
+            <tr ng-repeat="(key, value) in ctrl.dcData">
+              <td> {{key}} </td> <td> {{ value }} </td>
+            </tr>
+          </table>
+
+        <!-- <div ng-repeat="data in ctrl.dcData" class="players">
 
             <p>Name: {{data.displayName}}</p>
             <p>Team:  {{data.team}}</p>
@@ -226,15 +267,24 @@ draft projections fantasy points -->
             <p>Passing Yards: {{data.passingYards}}</p>
             <p>Passing INT's: {{data.passingInt}}</p>
             <p>Rush Yards: {{data.rushYards}}</p>
-            <p>Rush TD's: {{data.rushTD}}</p>
+            <p>Rush TD's: {{data.rushTD}}</p> -->
 
         </div>
       </div>
 
       <h5>Injuries</h5>
-      <button ng-click="ctrl.weeklyInjuries()">Injuries</button><br>
+      <button ng-click="ctrl.weeklyInjuries()">Search Injuries</button><br>
       <div class="showBoard">
-        <div ng-repeat="data in ctrl.iData" class="players">
+
+        <div class="table">
+
+          <table>
+            <tr ng-repeat="(key, value) in ctrl.iData">
+              <td> {{key}} </td> <td> {{ value }} </td>
+            </tr>
+          </table>
+
+        <!-- <div ng-repeat="data in ctrl.iData" class="players">
 
           <p>Name: {{data.displayName}}</p>
           <p>Team:  {{data.team}}</p>
@@ -248,19 +298,27 @@ draft projections fantasy points -->
           <p>Passing Yards: {{data.passingYards}}</p>
           <p>Passing INT's: {{data.passingInt}}</p>
           <p>Rush Yards: {{data.rushYards}}</p>
-          <p>Rush TD's: {{data.rushTD}}</p>
+          <p>Rush TD's: {{data.rushTD}}</p> -->
 
         </div>
       </div>
       <h5>Weekly Projections</h5>
         <form ng-submit="ctrl.weeklyWP()">
           <input type="text" ng-model="ctrl.createFormWP" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormWPCheck" placeholder="check for PPR"/>
+          <!-- <input type="checkbox" ng-model="ctrl.createFormWPCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
 
       <div class="showBoard">
-        <div ng-repeat="data in ctrl.wpData" class="players">
+        <div class="table">
+
+          <table>
+            <tr ng-repeat="(key, value) in ctrl.wpData">
+              <td> {{key}} </td> <td> {{ value }} </td>
+            </tr>
+          </table>
+
+        <!-- <div ng-repeat="data in ctrl.wpData" class="players">
 
             <p>Name: {{data.displayName}}</p>
             <p>Team:  {{data.team}}</p>
@@ -274,20 +332,27 @@ draft projections fantasy points -->
             <p>Passing Yards: {{data.passingYards}}</p>
             <p>Passing INT's: {{data.passingInt}}</p>
             <p>Rush Yards: {{data.rushYards}}</p>
-            <p>Rush TD's: {{data.rushTD}}</p>
+            <p>Rush TD's: {{data.rushTD}}</p> -->
 
         </div>
       </div>
 
       <h5>IDP Weekly Projections</h5>
-        <form ng-submit="ctrl.weeklyIDP()">
-          <input type="text" ng-model="ctrl.createFormIDP" placeholder="Position"/>
-          <input type="checkbox" ng-model="ctrl.createFormIDPCheck" placeholder="check for PPR"/>
+        <form ng-submit="ctrl.weeklyIDPCall()">
+          <!-- <input type="text" ng-model="ctrl.createFormIDP" placeholder="Position"/> -->
+          <!-- <input type="checkbox" ng-model="ctrl.createFormIDPCheck" placeholder="check for PPR"/> -->
           <input type="submit" value="Search Rankings" />
         </form>
 
       <div class="showBoard">
-        <div ng-repeat="data in ctrl.wIDPData" class="players">
+        <div class="table">
+
+          <table>
+            <tr ng-repeat="(key, value) in ctrl.wIDPData">
+              <td> {{key}} </td> <td> {{ value }} </td>
+            </tr>
+          </table>
+        <!-- <div ng-repeat="data in ctrl.wIDPData" class="players">
 
           <p>Name: {{data.displayName}}</p>
           <p>Team:  {{data.team}}</p>
@@ -301,7 +366,7 @@ draft projections fantasy points -->
           <p>Passing Yards: {{data.passingYards}}</p>
           <p>Passing INT's: {{data.passingInt}}</p>
           <p>Rush Yards: {{data.rushYards}}</p>
-          <p>Rush TD's: {{data.rushTD}}</p>
+          <p>Rush TD's: {{data.rushTD}}</p> -->
 
         </div>
       </div>
