@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 // change to what data we want to display
-const footballSchema = mongoose.Schema({
+const footballSchema = mongoose.Schema({ 
   displayName: {type: String},
   week: {type: Number, minimum: 1},
   team: {type: String},
