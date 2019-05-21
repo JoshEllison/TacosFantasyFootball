@@ -1,17 +1,25 @@
 // create our angular app
 // const apiURL = 'https://www.fantasyfootballnerd.com/service/' + apiKey
 // const apiKey = iqiam5yq7fm7
-const app = angular.module('FootballsApp', [])
+const app = angular.module('FootballsApp', []);
 // create our app controller
-app.controller('MainController', [ '$http', function($http) {
-
-
+app.controller('MainController', [ '$http', '$scope', function($http, $scope) {
+const controller = this;
+//
+//https://www.fantasyfootballnerd.com/service/weekly-rankings/json/apiKey/QB/2/1/
+// https://www.fantasyfootballnerd.com/service/weekly-idp/json/apiKey/
+//https://www.fantasyfootballnerd.com/service/weekly-projections/json/apiKey/QB/1/
+//https://www.fantasyfootballnerd.com/service/draft-idp/json/apiKey/
+////https://www.fantasyfootballnerd.com/service/draft-rankings/json/apiKey/1/QB/
+//https://www.fantasyfootballnerd.com/service/draft-projections/json/apiKey/QB/
   this.h5 = 'Fantasy Football!!!'
  // because of 2 way binding...anytime the holidays array is updated (add/remove)..
  // this will trigger Angular to update the DOM
   // this.authToken = ''
   // this.blogs = []
   // this.blog = ''
+  this.players = [];
+  this.indexOfEditFormToShow = null;
   this.createFormDR = ''
   this.formDR = []
   this.creatFormDP = ''
@@ -27,142 +35,260 @@ app.controller('MainController', [ '$http', function($http) {
   this.formWP =[]
   this.weeklyIDP = ''
   this.formIDP = []
+
+  this.idpCallDrafts = []
+  this.idpCallDraft = ''
+
+  this.draftProjectionsCalls = []
+  this.draftProjectionsCall = ''
+
+  this.drDatas = []
+  this.drData = ''
+  this.wpData = ''
+  this.dpData = ''
+  this.idpData = ''
+  this.wrData = ''
+  this.dcData = ''
+  this.iData = ''
+  // this.formIDP[0] + '/' + this.formIDP[1] + '/'
   // this.editBlog = {};
   // this.tools = [] //fill with buttons
   //DRAFT TOOLS
+
+
+//position filter doesn't work
 this.draftRankings = () => {
   console.log(this.createFormDR);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormDR,
-    ppr: this.createFormDRCheck}
+    PPR: this.createFormDRCheck}
   }).then(response => {
     this.formDR.unshift(response.data)
-    this.createFormDR = {}
     console.log(response);
+    this.callDraftRankings()
   }).catch(err => {
     console.log(err);
   })
 }
 
+this.callDraftRankings = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/draftRankings/'+ this.createFormDR
+  }).then(response => {
+    let parseDataDR = JSON.parse(response.data.body)
+    console.log(parseDataDR);
+    this.drData = parseDataDR.DraftRankings
+    console.log(this.drData);
 
 
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+//position works
 this.draftProjections = () => {
   console.log(this.createFormDP);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormDP,
-    ppr: this.createFormDPCheck}
+    PPR: this.createFormDPCheck}
   }).then(response => {
     this.formDP.unshift(response.data)
-    this.createFormDP = {}
     console.log(response);
+    this.draftProjectionsCall()
   }).catch(err => {
     console.log(err);
   })
 }
 
-
+this.draftProjectionsCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/draftProjections/'+ this.createFormDP
+  }).then(response => {
+    let parseDataDP = JSON.parse(response.data.body)
+    this.dpData = parseDataDP.DraftProjections
+    console.log(this.dpData);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+// not filtering based on position entered... hmm lol
 this.draftIDP = () => {
   console.log(this.createFormIDPDraft);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormIDPDraft,
     ppr: this.createFormIDPDraftCheck}
   }).then(response => {
     this.formIDPDraft.unshift(response.data)
-    this.createFormIDPDraft = {}
+
     console.log(response);
+    this.draftIDPCall()
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+this.draftIDPCall = () => {
+
+  $http({
+    method:'GET',
+    url:'/footballs/draftIDP/'
+  }).then(response => {
+
+    let parseDataIDP = JSON.parse(response.data.body)
+    this.idpData = parseDataIDP.week
+    console.log(this.idpData);
+
   }).catch(err => {
     console.log(err);
   })
 }
 
 ///SEASON TOOLS
-
+//Position filter works
 this.weeklyRankings = () => {
   console.log(this.createFormWR);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormWR,
     ppr: this.createFormWRCheck}
   }).then(response => {
     this.formWR.unshift(response.data)
-    this.createFormWR = {}
     console.log(response);
+    this.weeklyRankingsCall()
   }).catch(err => {
     console.log(err);
   })
 }
 
-
+this.weeklyRankingsCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/weeklyRankings/'+ this.createFormWR
+  }).then(response => {
+    let parseDataWR = JSON.parse(response.data.body)
+    this.wrData = parseDataWR
+    console.log(this.wrData);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+//no filtering call so need to filter returned object
 this.weeklyDC = () => {
   console.log(this.createFormDC);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormDC,
     ppr: this.createFormDCCheck}
   }).then(response => {
     this.formDC.unshift(response.data)
-    this.createFormDC = {}
     console.log(response);
+    this.weeklyDCCall()
   }).catch(err => {
     console.log(err);
   })
 }
 
-///////////////// CORS ISSUE FIX IT!!!!!
+this.weeklyDCCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/depthCharts/'
+  }).then(response => {
+    let parseDataDC = JSON.parse(response.data.body)
+    this.dcData = parseDataDC.DepthCharts
+    console.log(this.dcData);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+//doesn't have filters added so we can filter object returned
 this.weeklyInjuries = () => {
   console.log(this.createFormInjuries);
   $http({
     method:'GET',
-    url:'https://www.fantasyfootballnerd.com/service/injuries/json/iqiam5yq7fm7/'
+    url:'/footballs/injuries'
   }).then(response => {
-    returnedQuery = response.data
-    console.log(response.data);
+    let parseDataI = JSON.parse(response.data.body)
+    this.iData = parseDataI
+    console.log(this.iData);
+
   }).catch(err => {
     console.log(err);
   })
 }
 
 
+
+
+//postion works
 this.weeklyWP = () => {
   console.log(this.createFormWP);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormWP,
     ppr: this.createFormWPCheck}
   }).then(response => {
     this.formWP.unshift(response.data)
-    this.createFormWP = {}
     console.log(response);
+    this.weeklyWPCall()
   }).catch(err => {
     console.log(err);
   })
 }
 
+this.weeklyWPCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/weeklyProjections/' + this.createFormWP
+  }).then(response => {
+    let parseDataWP = JSON.parse(response.data.body)
+    this.wpData = parseDataWP
+    console.log(this.wpData);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+//position filter doesn't work
 this.weeklyIDP = () => {
   console.log(this.createFormIDP);
   $http({
-    method:'POST',
+    method:'GET',
     url:'/footballs',
     data: {position: this.createFormIDP,
     ppr: this.createFormIDPCheck}
   }).then(response => {
     this.formIDP.unshift(response.data)
-    this.createFormIDP = {}
     console.log(response);
+    this.weeklyIDPCall()
   }).catch(err => {
     console.log(err);
   })
 }
 
+this.weeklyIDPCall = () => {
+  $http({
+    method:'GET',
+    url:'/footballs/weeklyIDP/' + this.createFormIDP
+  }).then(response => {
+    let parseDataWIDP = JSON.parse(response.data.body)
+    this.wIDPData = parseDataWIDP
+    console.log(this.wIDPData);
+  }).catch(err => {
+    console.log(err);
+  })
+}
 
   // createHoliday method
   // this.createBlog = () => {
@@ -262,9 +388,89 @@ this.weeklyIDP = () => {
   //   console.log(blog);
   //   this.getBlogs(blog);
   // }
+// create new , edit, and delete players in draft board
+this.createPlayer = function(){
+    $http({
+      method: 'POST',
+      url: '/footballs',
+      data: {
+        displayName: this.displayName,
+        team: this.team,
+        position: this.position,
+        rank: this.rank,
+        byeWeek: this.byeWeek
+      }
+    }).then(function(response) {
+      controller.players.push(response.data);
+      console.log(response);
+    }), function (error){
+      console.log(error);
+    }
+  }
+  this.getPlayers = function(){
+    $http({
+      method: 'GET',
+      url: '/footballs',
+    }).then(function(response){
+      controller.players = response.data;
+    },  function(){
+      console.log('error');
+    });
+  };
+  this.deletePlayer = function(player){
+      $http({
+          method:'DELETE',
+          url: '/footballs/' + player._id
+      }).then(
+          function(response){
+              controller.getPlayers();
+          },
+          function(error){
+
+          }
+      );
+  }
+  this.editPlayer = function(player){
+      $http({
+          method:'PUT',
+          url: '/footballs/' + player._id,
+          data: {
+              displayName: this.updatedDisplayName,
+              team: this.updatedTeam,
+              position: this.updatedPosition,
+              rank: this.updatedRank,
+              byeWeek: this.updatedByeWeek
+          }
+      }).then(
+          function(response){
+              controller.getPlayers();
+              controller.indexOfEditFormToShow = null;
+          },
+          function(error){
+
+          }
+      );
+  }
+// ___________________MODAL LOGIN___________________
 
 
-}]) // closes app.controller
+  this.openLogin = () => {
+     this.showLogin = true;
+     // console.log($scope);
+     $scope.ctrl.showLogin = true;
+   }
+// __________CLOSE MODAL_________________
+   this.closeLogin = () => {
+      this.showLogin = false;
+      $scope.ctrl.showLogin = false;
+    }
+
+
+
+
+
+  this.getPlayers();
+}]); // closes app.controller
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -379,6 +585,7 @@ this.weeklyIDP = () => {
 
 ////////////////// weekly projections position filter same weekly filter options
 //https://www.fantasyfootballnerd.com/service/weekly-projections/json/apiKey/QB/1/
+
 // {
 //     "Week": 1,
 //     "Position": "QB",
@@ -483,20 +690,23 @@ this.weeklyIDP = () => {
 app.controller('AuthController', ['$http', function ($http){
 const controller = this;
   this.goApp = function(){
-    const controller = this; //add this
     $http({
         method:'GET',
-        url: '/app'
+        url: '/footballs'
     }).then(function(response){
         controller.loggedInUsername = response.data.username;
+        console.log(response);
+        console.log(controller.loggedInUsername);
     }, function(){
         console.log('error');
     });
 }
 
-
+this.test = "hello"
+console.log('running');
 
 this.createUser = () => {
+  console.log("create user is running");
   $http({
           method:'POST',
           url: '/users',
@@ -506,21 +716,26 @@ this.createUser = () => {
           }
       }).then(function(response){
           console.log(response);
+          // controller.createUsername = null;
+          // controller.createPassword = null;
       }, function(){
           console.log('error');
       });
 }
+
+
 this.logOut = function () {
   $http({
     method: 'DELETE',
     url: '/sessions'
   }).then(function (response) {
     console.log(response);
-    controller.loggedInUsername = null;
+    // controller.loggedInUsername = null;
   }, function (error){
     console.log(error);
   })
 }
+
 this.logIn = function(){
     $http({
         method:'POST',
@@ -533,6 +748,7 @@ this.logIn = function(){
         console.log(response);
         controller.loginUsername = null;
         controller.loginPassword = null;
+        // controller.goApp();
     }, function(){
         console.log('error');
     });
