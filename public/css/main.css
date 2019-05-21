@@ -1,21 +1,46 @@
 hr{
-    border: 1px solid black;
-    width: 100%;
+  border: 1px solid black;
+  width: 100%;
 }
+
 body {
-    background-color: #EFEFEF;
-    color: #F0F0F0;
+  background-color: #EFEFEF;
+  color: #F0F0F0;
   font-family: 'Patua One', cursive;
   background-size: cover;
 }
+
+header {
+  text-align: center;
+  font-size: 4em;
+  padding: 2%;
+}
+
+.flex{
+  display: flex;
+  width: 100%;
+  padding: 5%;
+}
+
+/* .container{
+  margin-left: 30px;
+  width: 35%;
+  display: flex;
+  align-content: space-between;
+}
+
+.draftContainer{
+
+}*/
+
 .showBoard{
   width: 25%;
   overflow: auto;
   height: 300px;
 }
-.container{
-  margin-left: 30px;
-}
+
+
+
 
 /*
 #96858F - dusty

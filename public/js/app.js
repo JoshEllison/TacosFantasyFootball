@@ -1,9 +1,9 @@
 // create our angular app
 // const apiURL = 'https://www.fantasyfootballnerd.com/service/' + apiKey
 // const apiKey = iqiam5yq7fm7
-const app = angular.module('FootballsApp', [])
+const app = angular.module('FootballsApp', []);
 // create our app controller
-app.controller('MainController', [ '$http', function($http) {
+app.controller('MainController', [ '$http', '$scope', function($http, $scope) {
 const controller = this;
 //
 //https://www.fantasyfootballnerd.com/service/weekly-rankings/json/apiKey/QB/2/1/
@@ -79,7 +79,7 @@ this.callDraftRankings = () => {
     url:'/footballs/draftRankings/'+ this.createFormDR
   }).then(response => {
     let parseDataDR = JSON.parse(response.data.body)
-    console.log(parseData);
+    console.log(parseDataDR);
     this.drData = parseDataDR.DraftRankings
     console.log(this.drData);
 
@@ -451,6 +451,22 @@ this.createPlayer = function(){
           }
       );
   }
+// ___________________MODAL LOGIN___________________
+
+
+  this.openLogin = () => {
+     this.showLogin = true;
+     // console.log($scope);
+     $scope.ctrl.showLogin = true;
+   }
+// __________CLOSE MODAL_________________
+   this.closeLogin = () => {
+      this.showLogin = false;
+      $scope.ctrl.showLogin = false;
+    }
+
+
+
 
 
   this.getPlayers();
@@ -686,9 +702,11 @@ const controller = this;
     });
 }
 
-
+this.test = "hello"
+console.log('running');
 
 this.createUser = () => {
+  console.log("create user is running");
   $http({
           method:'POST',
           url: '/users',
