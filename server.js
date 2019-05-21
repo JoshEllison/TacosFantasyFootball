@@ -18,7 +18,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true },
 
 // Error / Disconnection
 db.on('error', err => console.log(err.message + ' is Mongod not running?'));
-db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
+db.on('connected', () => console.log('mongo connected: '));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 
