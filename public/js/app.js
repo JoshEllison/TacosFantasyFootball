@@ -1,10 +1,10 @@
 // create our angular app
 // const apiURL = 'https://www.fantasyfootballnerd.com/service/' + apiKey
 // const apiKey = iqiam5yq7fm7
-const app = angular.module('FootballsApp', [])
+const app = angular.module('FootballsApp', []);
 // create our app controller
-app.controller('MainController', [ '$http', function($http) {
-
+app.controller('MainController', [ '$http', '$scope', function($http, $scope) {
+const controller = this;
 //
 //https://www.fantasyfootballnerd.com/service/weekly-rankings/json/apiKey/QB/2/1/
 // https://www.fantasyfootballnerd.com/service/weekly-idp/json/apiKey/
@@ -12,13 +12,14 @@ app.controller('MainController', [ '$http', function($http) {
 //https://www.fantasyfootballnerd.com/service/draft-idp/json/apiKey/
 ////https://www.fantasyfootballnerd.com/service/draft-rankings/json/apiKey/1/QB/
 //https://www.fantasyfootballnerd.com/service/draft-projections/json/apiKey/QB/
-
   this.h5 = 'Fantasy Football!!!'
  // because of 2 way binding...anytime the holidays array is updated (add/remove)..
  // this will trigger Angular to update the DOM
   // this.authToken = ''
   // this.blogs = []
   // this.blog = ''
+  this.players = [];
+  this.indexOfEditFormToShow = null;
   this.createFormDR = ''
   this.formDR = []
   this.creatFormDP = ''
@@ -43,7 +44,12 @@ app.controller('MainController', [ '$http', function($http) {
 
   this.drDatas = []
   this.drData = ''
-
+  this.wpData = ''
+  this.dpData = ''
+  this.idpData = ''
+  this.wrData = ''
+  this.dcData = ''
+  this.iData = ''
   // this.formIDP[0] + '/' + this.formIDP[1] + '/'
   // this.editBlog = {};
   // this.tools = [] //fill with buttons
@@ -72,9 +78,9 @@ this.callDraftRankings = () => {
     method:'GET',
     url:'/footballs/draftRankings/'+ this.createFormDR
   }).then(response => {
-    let parseData = JSON.parse(response.data.body)
-    console.log(parseData);
-    this.drData = parseData.DraftRankings
+    let parseDataDR = JSON.parse(response.data.body)
+    console.log(parseDataDR);
+    this.drData = parseDataDR.DraftRankings
     console.log(this.drData);
 
 
@@ -105,9 +111,9 @@ this.draftProjectionsCall = () => {
     method:'GET',
     url:'/footballs/draftProjections/'+ this.createFormDP
   }).then(response => {
-    this.draftProjectionsCalls = response.data
-
-    console.log(this.draftProjectionsCalls);
+    let parseDataDP = JSON.parse(response.data.body)
+    this.dpData = parseDataDP.DraftProjections
+    console.log(this.dpData);
   }).catch(err => {
     console.log(err);
   })
@@ -137,9 +143,9 @@ this.draftIDPCall = () => {
     url:'/footballs/draftIDP/'
   }).then(response => {
 
-    this.idpCallDrafts = response.data
-    this.idpCallDraft = this.idpCallDrafts[0]
-    console.log(this.idpCallDrafts);
+    let parseDataIDP = JSON.parse(response.data.body)
+    this.idpData = parseDataIDP.week
+    console.log(this.idpData);
 
   }).catch(err => {
     console.log(err);
@@ -169,9 +175,9 @@ this.weeklyRankingsCall = () => {
     method:'GET',
     url:'/footballs/weeklyRankings/'+ this.createFormWR
   }).then(response => {
-    this.weeklyRankingsCalls = response.data
-
-    console.log(this.weeklyRankingsCalls);
+    let parseDataWR = JSON.parse(response.data.body)
+    this.wrData = parseDataWR
+    console.log(this.wrData);
   }).catch(err => {
     console.log(err);
   })
@@ -198,9 +204,9 @@ this.weeklyDCCall = () => {
     method:'GET',
     url:'/footballs/depthCharts/'
   }).then(response => {
-    this.weeklyDCCalls = response.data
-
-    console.log(this.weeklyDCCalls);
+    let parseDataDC = JSON.parse(response.data.body)
+    this.dcData = parseDataDC.DepthCharts
+    console.log(this.dcData);
   }).catch(err => {
     console.log(err);
   })
@@ -212,8 +218,9 @@ this.weeklyInjuries = () => {
     method:'GET',
     url:'/footballs/injuries'
   }).then(response => {
-    this.weeklyInjuriesCalls = response.data
-    console.log(this.weeklyInjuriesCalls);
+    let parseDataI = JSON.parse(response.data.body)
+    this.iData = parseDataI
+    console.log(this.iData);
 
   }).catch(err => {
     console.log(err);
@@ -245,9 +252,9 @@ this.weeklyWPCall = () => {
     method:'GET',
     url:'/footballs/weeklyProjections/' + this.createFormWP
   }).then(response => {
-    this.weeklyWPCalls = response.data
-
-    console.log(this.weeklyWPCalls);
+    let parseDataWP = JSON.parse(response.data.body)
+    this.wpData = parseDataWP
+    console.log(this.wpData);
   }).catch(err => {
     console.log(err);
   })
@@ -275,9 +282,9 @@ this.weeklyIDPCall = () => {
     method:'GET',
     url:'/footballs/weeklyIDP/' + this.createFormIDP
   }).then(response => {
-    this.weeklyIDPCalls = response.data
-
-    console.log(this.weeklyIDPCalls);
+    let parseDataWIDP = JSON.parse(response.data.body)
+    this.wIDPData = parseDataWIDP
+    console.log(this.wIDPData);
   }).catch(err => {
     console.log(err);
   })
@@ -381,9 +388,89 @@ this.weeklyIDPCall = () => {
   //   console.log(blog);
   //   this.getBlogs(blog);
   // }
+// create new , edit, and delete players in draft board
+this.createPlayer = function(){
+    $http({
+      method: 'POST',
+      url: '/footballs',
+      data: {
+        displayName: this.displayName,
+        team: this.team,
+        position: this.position,
+        rank: this.rank,
+        byeWeek: this.byeWeek
+      }
+    }).then(function(response) {
+      controller.players.push(response.data);
+      console.log(response);
+    }), function (error){
+      console.log(error);
+    }
+  }
+  this.getPlayers = function(){
+    $http({
+      method: 'GET',
+      url: '/footballs',
+    }).then(function(response){
+      controller.players = response.data;
+    },  function(){
+      console.log('error');
+    });
+  };
+  this.deletePlayer = function(player){
+      $http({
+          method:'DELETE',
+          url: '/footballs/' + player._id
+      }).then(
+          function(response){
+              controller.getPlayers();
+          },
+          function(error){
+
+          }
+      );
+  }
+  this.editPlayer = function(player){
+      $http({
+          method:'PUT',
+          url: '/footballs/' + player._id,
+          data: {
+              displayName: this.updatedDisplayName,
+              team: this.updatedTeam,
+              position: this.updatedPosition,
+              rank: this.updatedRank,
+              byeWeek: this.updatedByeWeek
+          }
+      }).then(
+          function(response){
+              controller.getPlayers();
+              controller.indexOfEditFormToShow = null;
+          },
+          function(error){
+
+          }
+      );
+  }
+// ___________________MODAL LOGIN___________________
 
 
-}]) // closes app.controller
+  this.openLogin = () => {
+     this.showLogin = true;
+     // console.log($scope);
+     $scope.ctrl.showLogin = true;
+   }
+// __________CLOSE MODAL_________________
+   this.closeLogin = () => {
+      this.showLogin = false;
+      $scope.ctrl.showLogin = false;
+    }
+
+
+
+
+
+  this.getPlayers();
+}]); // closes app.controller
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -608,14 +695,18 @@ const controller = this;
         url: '/footballs'
     }).then(function(response){
         controller.loggedInUsername = response.data.username;
+        console.log(response);
+        console.log(controller.loggedInUsername);
     }, function(){
         console.log('error');
     });
 }
 
-
+this.test = "hello"
+console.log('running');
 
 this.createUser = () => {
+  console.log("create user is running");
   $http({
           method:'POST',
           url: '/users',
