@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const moment = require('moment');
-const morgan = require('morgan')
+const morgan = require('morgan');
 const session = require('express-session');
-const db = mongoose.connection
+const db = mongoose.connection;
+const methodOverride = require('method-override');
 
 // Environment Variables
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/football_app';
@@ -17,8 +18,12 @@ mongoose.connect(mongoURI, { useNewUrlParser: true },
 
 // Error / Disconnection
 db.on('error', err => console.log(err.message + ' is Mongod not running?'));
+db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
+
+// open connection to mongodb
+db.on('open' , ()=>{});
 // Middleware
 
 
@@ -30,6 +35,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(morgan('tiny'))                           // returns middleware that only parses JSON
 app.use(express.static('public'))                   //static files
+app.use(methodOverride('_method'));
 app.use(session({
     secret:'feedmeseymour',
     resave: false,
