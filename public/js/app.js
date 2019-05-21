@@ -126,6 +126,7 @@ this.draftIDP = () => {
     url:'/footballs',
     data: {position: this.createFormIDPDraft},
     // ppr: this.createFormIDPDraftCheck}
+
   }).then(response => {
     this.formIDPDraft.unshift(response.data)
 
@@ -284,6 +285,7 @@ this.weeklyIDPCall = () => {
   }).then(response => {
     let parseDataWIDP = JSON.parse(response.data.body)
     this.wIDPData = parseDataWIDP
+
     console.log(this.wIDPData);
   }).catch(err => {
     console.log(err);
