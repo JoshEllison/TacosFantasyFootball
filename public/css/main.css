@@ -41,10 +41,18 @@ a:hover{
   padding: 5%;
   justify-content: space-around;
 }
-.container {
-  margin: 0px;
-  width: 40%;
+.container1{
+  margin-left: -3%;
+  width: 50%;
   height: 100%;
+  text-align: left;
+}
+
+.container2{
+  margin-right: 4%;
+  width: 30%;
+  height: 100%;
+  text-align: right;
 }
 footer{
   color: #C3DBB8;
@@ -63,7 +71,7 @@ footer{
 } */
 
 .showBoard{
-  width: 80%;
+  width: 100%;
   overflow: auto;
   height: 300px;
 }
