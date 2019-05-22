@@ -1,10 +1,10 @@
 # Taco's Fantasy Advice
 
-## Located at:
-## Git Hub - https://github.com/docholliday211/TacosFantasyFootball
-## Deployed on Heroku: https://tacos-fantasy-advice.herokuapp.com/
+### Located at:
+#### Git Hub - https://github.com/docholliday211/TacosFantasyFootball
+#### Deployed on Heroku: https://tacos-fantasy-advice.herokuapp.com/
 
-### Made by: Josh Ellison aka "wildcard" - Aaron Reinheimer aka "A-A-RON" - Thad Stinson aka "Odin's Beard"
+#### Made by: Josh Ellison aka "wildcard" - Aaron Reinheimer aka "A-A-RON" - Thad Stinson aka "Odin's Beard"
 
 -----README.md-----
 
