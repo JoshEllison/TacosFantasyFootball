@@ -2,7 +2,7 @@
 
 ### Located at:
 #### Git Hub - https://github.com/docholliday211/TacosFantasyFootball
-#### Deployed on Heroku: https://tacos-fantasy-advice.herokuapp.com/
+#### Deployed on Heroku: https://tacos-fantasy-advice.herokuapp.com/ (only works during football season due to API constraints)
 
 #### Made by: Josh Ellison aka "wildcard" - Aaron Reinheimer aka "A-A-RON" - Thad Stinson aka "Odin's Beard"
 
