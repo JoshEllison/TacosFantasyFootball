@@ -1,8 +1,9 @@
 # Taco's Fantasy Advice
+Notice: this app is not working due to us no longer paying for the API key. No more work will be done on this app due to the high API cost.
 
 ### Located at:
 #### Git Hub - https://github.com/docholliday211/TacosFantasyFootball
-#### Deployed on Heroku: https://tacos-fantasy-advice.herokuapp.com/ (only works during football season due to API constraints)
+#### Deployed on Heroku: https://tacos-fantasy-advice.herokuapp.com/ 
 
 #### Made by: Josh Ellison aka "wildcard" - Aaron Reinheimer aka "A-A-RON" - Thad Stinson aka "Odin's Beard"
 
